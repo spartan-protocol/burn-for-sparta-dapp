@@ -1,0 +1,10 @@
+node_modules/
+addresses.md
+.firebase
+.firebaserc
+build/
+firebase-debug.log
+.vercel
+.idea
+.idea/*
+.env
