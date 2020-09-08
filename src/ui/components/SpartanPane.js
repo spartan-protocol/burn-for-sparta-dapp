@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../../context'
 
-import { SPARTA_ADDR, getSpartanPrice, getTokenContract, getNewTokenData, getAccount, getExplorerURL } from '../../client/web3.js'
+import Web3 from 'web3'
+
+import {
+    SPARTA_ADDR, getSpartanPrice, getExplorerURL, ERC20_ABI,
+    // getTokenContract, nodeAPI, UTILS_ADDR, UTILS_ABI,
+    // getNewTokenData, getAccount,
+} from '../../client/web3.js'
 import { convertFromWei, currency } from '../../common/utils'
 
 import { Row, Col } from 'antd'
@@ -15,7 +21,7 @@ export const SpartanPane = () => {
     const [spartanData, setSpartanData] = useState(
         { name: '', symbol: '', totalSupply: '', decimals: '', genesis: '' })
     const [emissionData, setEmissionData] = useState(
-        { balance: '', totalBurnt: '', totalEmitted: '', totalFees: '' })
+        { balance: '', totalBurnt: '', totalEmitted: 0, totalFees: '' })
     const [marketData, setMarketData] = useState(
         { priceUSD: '', priceETH: '', ethPrice: '' })
 
@@ -31,9 +37,20 @@ export const SpartanPane = () => {
     }
 
     const loadspartanData = async () => {
-        let account = await getAccount()
-        let spartanData = await getNewTokenData(SPARTA_ADDR, account)
-        console.log({spartanData})
+        // let web3 = new Web3(new Web3.providers.HttpProvider(nodeAPI()))
+        // let contract = new web3.eth.Contract(UTILS_ABI, UTILS_ADDR)
+        // console.log(contract)
+        // var spartanData = await contract.methods.getTokenDetails(SPARTA_ADDR).call()
+        
+        // let account = await getAccount()
+        // let spartanData = await getNewTokenData(SPARTA_ADDR, account)
+        let spartanData = {
+            name: 'SPARTAN PROTOCOL TOKEN',
+            symbol: 'SPARTA',
+            maxSupply: 300000000,
+            initalSupply: 100000000,
+        }
+        console.log({ spartanData })
         context.setContext({
             "spartanData": spartanData
         })
@@ -41,13 +58,22 @@ export const SpartanPane = () => {
     }
 
     const loadEmissionData = async () => {
-        let contract = await getTokenContract(SPARTA_ADDR)
+        // let web3 = new Web3(new Web3.providers.HttpProvider(nodeAPI()))
+        // let web3 = new Web3(Web3.givenProvider || nodeAPI())
+        // let web3 = new Web3(nodeAPI())
+        // let web3 = new Web3(new Web3.providers.HttpProvider('https://chain-api.singapore-01.ankr.com/7129aa8e-7000-4b28-9ae2-4c80dbcfd4d3'))
+        let web3 = new Web3(Web3.givenProvider)
+        let contract = new web3.eth.Contract(ERC20_ABI, SPARTA_ADDR)
+        console.log(contract)
+        // let totalSupply = 'test'
+
+        // let contract = await getTokenContract(SPARTA_ADDR)
         let totalSupply = convertFromWei(await contract.methods.totalSupply().call())
         let emissionData = {
             totalEmitted: totalSupply,
         }
         setEmissionData(emissionData)
-        context.setContext({"emissionData": emissionData})
+        context.setContext({ "emissionData": emissionData })
     }
 
     const loadMarketData = async () => {
@@ -76,7 +102,7 @@ export const SpartanPane = () => {
             <Col xs={24} sm={18} style={{ paddingLeft: 20 }}>
                 <Row>
                     <Col xs={24}>
-                        <Text size={32}>{spartanData.name}&nbsp;({spartanData.symbol})</Text>
+                        <Text size={32}> {spartanData.name}({spartanData.symbol})</Text>
                     </Col>
                     <Col xs={0}>
                     </Col>
@@ -86,12 +112,12 @@ export const SpartanPane = () => {
                     <Col xs={24} sm={12}>
                         <LabelGrey size={14}>MAX SUPPLY</LabelGrey>
                         <br />
-                        <Text size={24}>{currency(300000000, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
+                        <Text size={24}>{currency(spartanData.maxSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
                     </Col>
                     <Col xs={24} sm={12}>
                         <LabelGrey size={14}>INITIAL DISTRIBUTION</LabelGrey>
                         <br />
-                        <Text size={24}>{currency(100000000, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
+                        <Text size={24}>{currency(spartanData.initalSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
                     </Col>
                 </Row>
 
@@ -107,8 +133,8 @@ export const SpartanPane = () => {
                         <Text size={24}>{currency((emissionData.totalEmitted * marketData.priceUSD), 0, 0)}</Text>
                     </Col>
                 </Row>
-                <br/>
-                <a id="SpartanStatsTableContractAddress" href={`${getExplorerURL()}address/${SPARTA_ADDR}`} target="blank" style={{fontSize:16, color:Colour().gold}}>{SPARTA_ADDR}</a>
+                <br />
+                <a id="SpartanStatsTableContractAddress" href={`${getExplorerURL()}address/${SPARTA_ADDR}`} target="blank" style={{ fontSize: 16, color: Colour().gold }}>{SPARTA_ADDR}</a>
             </Col>
             <Col id="SpartanStatsTableCurrentPrice" xs={24} sm={6} style={{ paddingRight: 20 }}>
                 <div style={{ marginBottom: '2rem', textAlign: 'center' }}>

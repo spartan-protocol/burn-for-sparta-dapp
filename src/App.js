@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Layout } from 'antd'
 import 'antd/dist/antd.less'
 
-import Header from './ui/layout/HeaderNew'
+import Header from './ui/layout/Header'
 import Sidebar from './ui/layout/Sidebar'
 import Overview from './ui/pages/Overview'
 import Burn from './ui/pages/Burn'

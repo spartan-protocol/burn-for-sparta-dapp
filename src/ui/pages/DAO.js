@@ -24,9 +24,8 @@ const DAO = (props) => {
     // const [visible, setVisible] = useState(false);
 
     const [asset, setAsset] = useState(false);
-    const [maxClaim, setMaxClaim] = useState(false);
     const [claimRate, setClaimRate] = useState(false);
-    const [maxTotalClaim, setMaxTotalClaim] = useState(false);
+    const [allocation, setAllocation] = useState(false);
     const [daoAddress, setDAOAddress] = useState(false);
     const [routerAddress, setRouterAddress] = useState(false);
     const [incentiveAddress, setIncentiveAddress] = useState(false);
@@ -44,17 +43,14 @@ const DAO = (props) => {
     const changeAsset = (e) => {
         setAsset(e.target.value)
     }
-    const changeMaxClaim = (e) => {
-        let wei = utils.parseEther(e.target.value)
-        setMaxClaim(wei.toString())
-    }
+
     const changeClaimRate = (e) => {
         let wei = utils.parseEther(e.target.value)
         setClaimRate(wei.toString())
     }
-    const changeMaxTotalClaim = (e) => {
+    const changeAllocation = (e) => {
         let wei = utils.parseEther(e.target.value)
-        setMaxTotalClaim(wei.toString())
+        setAllocation(wei.toString())
     }
 
     const changeDAOAddress = (e) => {
@@ -72,7 +68,7 @@ const DAO = (props) => {
 
     const listAsset = async () => {
         let contract = getSpartaContract()
-        let tx = await contract.methods.listAssetWithClaim(asset, maxClaim, claimRate, maxTotalClaim).send({ from: context.walletData.address })
+        let tx = await contract.methods.listAssetWithClaim(asset, claimRate, allocation).send({ from: context.walletData.address })
         console.log(tx.transactionHash)
     }
     const listDAO = async () => {
@@ -121,13 +117,10 @@ const DAO = (props) => {
                                     <Input onChange={changeAsset}
                                         placeholder={'Enter BEP2E Asset Address'}
                                         allowClear={true}></Input>
-                                    <Input onChange={changeMaxClaim}
-                                        placeholder={'Enter Max Claim'}
-                                        allowClear={true}></Input>
                                     <Input onChange={changeClaimRate}
                                         placeholder={'Enter Claim Rate'}
                                         allowClear={true}></Input>
-                                    <Input onChange={changeMaxTotalClaim}
+                                    <Input onChange={changeAllocation}
                                         placeholder={'Enter Max Total Claim'}
                                         allowClear={true}></Input>
                                     <br />

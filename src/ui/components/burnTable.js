@@ -7,7 +7,9 @@ import { Click, Colour } from '../components'
 import { Button } from './elements'
 
 import {
-    BNB_ADDR, SPARTA_ADDR, getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract
+    BNB_ADDR, SPARTA_ADDR, getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract, 
+    getAssets, getTokenDetails, getListedTokens,
+    getWalletData,
 } from '../../client/web3.js'
 
 import { formatWei, getBig } from '../../common/utils'
@@ -151,6 +153,26 @@ export const BurnTable = () => {
         message.success(`Transaction Sent! $SPARTA is now in your wallet.`, 4);
         setStartTx(false)
         setModal(false)
+        refreshWallet()
+    }
+
+    const refreshWallet = async () => {
+        message.loading('Loading tokens', 3);
+        let assetArray = context.assetArray ? context.assetArray : await getAssets()
+        context.setContext({ 'assetArray': assetArray })
+
+        let tokenArray = context.tokenArray ? context.tokenArray : await getListedTokens()
+        context.setContext({ 'tokenArray': tokenArray })
+
+        let allTokens = assetArray.concat(tokenArray)
+        var sortedTokens = [...new Set(allTokens)].sort()
+
+        let tokenDetailsArray = context.tokenDetailsArray ? context.tokenDetailsArray : await getTokenDetails(context.walletData.address, sortedTokens)
+        context.setContext({ 'tokenDetailsArray': tokenDetailsArray })
+
+        message.loading('Loading wallet data', 3);
+        let walletData = await getWalletData(context.walletData.address, tokenDetailsArray)
+        context.setContext({ 'walletData': walletData })
     }
 
     const getLink = (record) => {
@@ -178,7 +200,7 @@ export const BurnTable = () => {
             title: 'SPARTA Value',
             key: 'value',
             render: (record) => (
-                <h3 style={{ fontSize: 24 }}>{formatWei((record.balance * record.claimRate / (10 ** 18)), 2, 2)}</h3>
+                <h3 style={{ fontSize: 24 }}>{formatWei(getMaxAmount(record.balance, record), 2, 2)}</h3>
             )
         },
         {

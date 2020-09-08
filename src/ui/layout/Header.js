@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../../context'
-import { Row, Col, Layout, Drawer } from 'antd';
+import { Row, Col, Layout, Drawer, Button } from 'antd';
 import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
-import { Button } from '../components/elements'
+// import { Button } from '../components/elements'
 
 import Web3 from 'web3'
 import { message } from 'antd';
@@ -26,9 +26,11 @@ const Headbar = (props) => {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        connectWallet()
+        if(context.connectedBSC){
+            connectWallet()
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [context.connectedBSC])
 
     const connectWallet = async () => {
         setConnecting(true)

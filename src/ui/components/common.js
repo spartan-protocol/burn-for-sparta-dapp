@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Breadcrumb, Button, Input, Divider } from 'antd'
 // import { DownOutlined, } from '@ant-design/icons';
@@ -197,7 +197,7 @@ export const PoolPaneSide = (props) => {
 
   const rowStylesPane = {
     marginTop: 20
-}
+  }
 
   return (
     <div>
@@ -305,8 +305,17 @@ export const ColourCoin = (props) => {
   const stopCol = rainbowStop(numbers[1])
   const coinName = symbol.length > 4 ? symbol.substr(0, 4) : symbol
 
+  const [hasLogo, setHasLogo] = useState(false)
+
+  useEffect(() => {
+    // console.log(`../../assets/coins/${(props.symbol).toLowerCase()}.png`)
+    // if ((props.symbol).toLowerCase() == 'sparta') {
+      setHasLogo(false)
+    // }
+  }, [])
+
   const coinStyle = {
-    marginTop:5,
+    marginTop: 5,
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
@@ -326,13 +335,30 @@ export const ColourCoin = (props) => {
     fontSize: props.size / 4,
   }
 
+  const imgStyles = {
+    heigh: 100,
+    marginLeft: 40,
+    marginRight: 40
+  }
+
   return (
     <div >
-      <Row style={coinStyle}>
-        <Col style={{paddingTop:30}}>
-          <p style={textStyles}>{coinName}</p>
-        </Col>
-      </Row>
+      {hasLogo &&
+        <Row>
+          <Col>
+            <img src={`../../assets/coins/${(props.symbol).toLowerCase()}.png`} alt={`${(props.symbol).toLowerCase()}-icon`} style={imgStyles} />
+          </Col>
+        </Row>
+      }
+      {!hasLogo &&
+        <>
+          <Row style={coinStyle}>
+            <Col style={{ paddingTop: 30 }}>
+              <p style={textStyles}>{coinName}</p>
+            </Col>
+          </Row>
+        </>
+      }
     </div>
   )
 }
@@ -348,7 +374,7 @@ export const CoinRow = (props) => {
   return (
     <div>
       <Row style={rowStyles}>
-        <Col xs={4} style={{textAlign:"left"}}>
+        <Col xs={4} style={{ textAlign: "left" }}>
           <ColourCoin symbol={props.symbol} size={props.size} />
         </Col>
         <Col xs={20}>
@@ -356,7 +382,7 @@ export const CoinRow = (props) => {
             <Col xs={12}>
               <Label size={props.size / 1.8}>{props.symbol}</Label><br />
             </Col>
-            <Col xs={12} style={{textAlign:"right"}}>
+            <Col xs={12} style={{ textAlign: "right" }}>
               <Text size={props.size / 2}>{convertFromWei(props.balance)}</Text><br />
               {/* <Text size={props.size / 3}>({formatUSD(convertFromWei(props.balance))})</Text> */}
             </Col>

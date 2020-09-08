@@ -41,7 +41,7 @@ export const nodeAPI = () => {
 }
 
 export const getWeb3 = () => {
-    return new Web3(Web3.givenProvider || "http://localhost:7545")
+    return new Web3(Web3.givenProvider || nodeAPI())
 }
 
 export const getSpartanPrice = async () => {
@@ -143,8 +143,9 @@ export const getAllocationData = async (eligibleTokens, walletData) => {
         let address = eligibleTokens[i].address
         console.log(address, eligibleTokens)
         let allocationDetails = await contract.methods.getAssetDetails(address).call()
+        console.log({allocationDetails})
         let approved = address === BNB_ADDR ? true : await checkApproval(walletData.address, address)
-        if(+allocationDetails.listed === true){
+        if(allocationDetails.listed === true){
             allocationDetails.address = address
             allocationDetails.name = eligibleTokens[i].name
             allocationDetails.symbol = eligibleTokens[i].symbol
