@@ -3,6 +3,7 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import { Abstract } from '../components/abstract'
 import { SpartanPane } from '../components/SpartanPane'
+import { UsefulLinks } from '../components/usefulLinks'
 
 import { Colour, Click } from '../components'
 
@@ -53,6 +54,14 @@ const Overview = (props) => {
 
 			<SpartanPane/>
 			<hr />
+			<Row>
+				<Col sm={8}>
+					<h1>LEARN MORE</h1>
+					<UsefulLinks />
+				</Col>
+			</Row>
+			<br/>
+			<br/>
 		</div>
 	)
 }
