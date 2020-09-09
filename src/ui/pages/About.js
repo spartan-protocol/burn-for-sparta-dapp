@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Row, Col } from 'antd'
-import { UsefulLinks } from '../components/usefulLinks'
 
 import '../../App.less'
 
@@ -63,14 +62,7 @@ This project may fail, despite best attempts. Know the risks.
 				</Col>
 			</Row>
 			<br/>
-			<Row>
-				<Col sm={8}>
-					<h1>LEARN MORE</h1>
-					<UsefulLinks />
-				</Col>
-			</Row>
-			<br/>
-			<br/>
+			
 
 		</div>
 	)

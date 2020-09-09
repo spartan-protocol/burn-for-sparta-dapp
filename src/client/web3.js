@@ -31,13 +31,13 @@ export const getExplorerURL = () => {
 }
 
 export const nodeAPI = () => {
-    // const apiKey = process.env.REACT_APP_INFURA_API
+    const apiKey = process.env.REACT_APP_ANKR_API
     // if(TESTNET) {
     //     return ('https://rinkeby.infura.io/v3/' + apiKey)
     // } else {
     //     return ('https://mainnet.infura.io/v3/' + apiKey)
     // }
-    return('https://chain-api.singapore-01.ankr.com/d4112e1d-116d-4bf7-a257-add2dfcb3773')
+    return('https://chain-api.singapore-01.ankr.com/' + apiKey)
 }
 
 export const getWeb3 = () => {
