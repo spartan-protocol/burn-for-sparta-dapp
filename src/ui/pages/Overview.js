@@ -43,7 +43,7 @@ const Overview = (props) => {
 				<Col xs={8} style={{padding:10}}>
 					<h1 style={{ fontSize: 48 }}>2</h1>  <h1>CONNECT</h1>
 					<h2> Connect your Metamask with Binance Smart Chain.</h2>
-					<Click size={18}><a href='https://medium.com/@spartanprotocol/how-to-connect-metamask-to-bsc-testnet-7d89c111ab2' rel="noopener noreferrer"style={{ color: Colour().gold}}>CONNECT&nbsp;>></a></Click>
+					<Click size={18}><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer"style={{ color: Colour().gold}}>CONNECT&nbsp;>></a></Click>
 				</Col>
 				<Col xs={8} style={{padding:10}}>
 					<h1 style={{ fontSize: 48 }}>3</h1>  <h1>BURN</h1>
