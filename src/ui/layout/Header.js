@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../../context'
 import { Row, Col, Layout, Drawer, Button } from 'antd';
-import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
-// import { Button } from '../components/elements'
+//import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
+//import {  } from '../components/elements'
 
 import Web3 from 'web3'
 import { message } from 'antd';
@@ -11,10 +11,7 @@ import logo from '../../assets/spartan-logo-white.png';
 
 import WalletDrawer from './WalletDrawer'
 import { getAddressShort, } from '../../common/utils'
-import {
-    getAssets, getTokenDetails, getListedTokens,
-    getWalletData, getStakesData, getListedPools
-} from '../../client/web3'
+import {getAssets, getTokenDetails, getListedTokens, getWalletData, getStakesData, getListedPools} from '../../client/web3'
 
 const { Header } = Layout;
 
@@ -42,20 +39,24 @@ const Headbar = (props) => {
             context.setContext({ 'assetArray': assetArray })
             // let assetDetailsArray = context.assetDetailsArray ? context.assetDetailsArray : await getTokenDetails(account, assetArray)
             // context.setContext({ 'assetDetailsArray': assetDetailsArray })
+            console.log(assetArray)
 
             let tokenArray = context.tokenArray ? context.tokenArray : await getListedTokens()
             context.setContext({ 'tokenArray': tokenArray })
             // context.setContext({ 'poolsData': await getPoolsData(tokenArray) })
+            console.log(tokenArray)
 
             let allTokens = assetArray.concat(tokenArray)
             var sortedTokens = [...new Set(allTokens)].sort()
-
+            
             let tokenDetailsArray = context.tokenDetailsArray ? context.tokenDetailsArray : await getTokenDetails(account, sortedTokens)
             context.setContext({ 'tokenDetailsArray': tokenDetailsArray })
+            console.log(tokenDetailsArray)
 
             message.loading('Loading wallet data', 3);
             let walletData = await getWalletData(account, tokenDetailsArray)
             context.setContext({ 'walletData': walletData })
+            console.log("loaded wallet data")
 
             let poolArray = context.poolArray ? context.poolArray : await getListedPools()
             context.setContext({ 'poolArray': poolArray })
@@ -68,9 +69,11 @@ const Headbar = (props) => {
             setConnecting(false)
             setConnected(true)
             message.success('Loaded!', 2);
+            console.log("Metamask connected")
         } else {
             await ethEnabled()
             setConnected(false)
+            console.log("Metamask not connected")
         }
     }
 
@@ -118,10 +121,10 @@ const Headbar = (props) => {
                         <Button type="primary" onClick={connectWallet}>CONNECT</Button>
                     }
                     {connecting &&
-                        <Button type="primary" icon={<LoadingOutlined />}>CONNECTING</Button>
+                        <Button type="primary" >CONNECTING</Button>
                     }
                     {connected &&
-                        <Button type="primary" icon={<UserOutlined />} onClick={showDrawer}>{addr()}</Button>
+                        <Button type="primary" onClick={showDrawer}>{addr()}</Button>
                     }
                 </Col>
             </Row>

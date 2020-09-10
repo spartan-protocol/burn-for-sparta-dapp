@@ -4,10 +4,10 @@ import { Context } from '../../context'
 
 import { getSpartaContract, getDaoContract } from '../../client/web3'
 
-import { Row, Col, Input } from 'antd';
+import { Row, Col, Input, Button } from 'antd';
 import { paneStyles, colStyles } from '../components/styles'
 
-import { H1, Button } from '../components/elements';
+import { H1 } from '../components/elements';
 
 var utils = require('ethers').utils;
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
-import { LabelGrey } from '../components'
+
 import { BurnTable } from '../components/burnTable'
 import { AllocationTable } from '../components/allocationTable'
 
-import { Click, Colour, Center, Button } from "../components"
+import { Click, Colour, Center, Button, LabelGrey } from "../components"
 
 import '../../App.less'
 import { Tabs, Modal, Row, Col } from 'antd'
@@ -30,7 +30,7 @@ const Burn = () => {
 			setLoaded(true)
 			setTab('1')
 			if(!context.connectedBSC){
-				setModal(true)
+				setModal(true)				
 			}
 		}
 		// eslint-disable-next-line
@@ -48,6 +48,7 @@ const Burn = () => {
 		setConfirmLoading(true)
 		context.setContext({connectedBSC:true})
 		setModal(false)
+		console.log("connectedBSC")
 	};
 
 	const handleCancel = () => {
@@ -81,7 +82,6 @@ const Burn = () => {
 						</>
 					}
 				</TabPane>
-
 				<TabPane tab="ALLOCATIONS" key="2" style={{ textAlign: "left" }}>
 					<h1>ALLOCATION TABLE</h1>
 					<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
@@ -123,7 +123,7 @@ const ModalContent = (props) => {
                 <Col xs={24}>
                     <p>In order to use this DApp you will need to connect with Binance Smart Chain.</p>
                     <p>You need to set your Metamask to connect to a different network.</p>
-					<Click><a href='https://medium.com/@spartanprotocol/how-to-connect-metamask-to-bsc-testnet-7d89c111ab2' rel="noopener noreferrer" title="Burn Address" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>LEARN HERE -></a></Click>
+					<Click><a href='https://medium.com/@spartanprotocol/how-to-connect-metamask-to-bsc-testnet-7d89c111ab2' rel="noopener noreferrer" title="Burn Address" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>LEARN HERE</a></Click>
 					<br/><br/>
 					<p>If you have connected properly, click OK.</p>
                 </Col>

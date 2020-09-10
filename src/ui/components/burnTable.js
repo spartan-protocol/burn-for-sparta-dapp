@@ -221,10 +221,10 @@ export const BurnTable = () => {
                             </div>
                         }
                         {(!approved && !burnt) &&
-                            <Button onClick={() => unlockToken(record)}>UNLOCK >></Button>
+                            <Button onClick={() => unlockToken(record)}>UNLOCK</Button>
                         }
                         {burnt &&
-                            <Click><a href={getLink(record)} rel="noopener noreferrer" title="Etherscan Link" target="_blank" style={{ color: "#D09800", fontSize: 16 }}>VIEW -></a></Click>
+                            <Click><a href={getLink(record)} rel="noopener noreferrer" title="Etherscan Link" target="_blank" style={{ color: "#D09800", fontSize: 16 }}>VIEW</a></Click>
                         }
 
                         <Modal
@@ -276,7 +276,6 @@ const ModalContent = (props) => {
 
     return (
         <div>
-
             <Row>
                 <Col xs={12} style={{ paddingRight: 20 }}>
                     <h3>BURN AN AMOUNT</h3>

@@ -9,12 +9,12 @@ import Overview from './ui/pages/Overview'
 import Burn from './ui/pages/Burn'
 import About from './ui/pages/About'
 import DAO from './ui/pages/DAO'
+import Pools from './ui/pages/Pools'
+//import test from './ui/pages/test'
 import { Colour } from './ui/components'
 
 import { ContextProvider } from './context'
-
 import { BreakpointProvider } from 'react-socks'
-
 const { Content } = Layout
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
 									<Route path="/overview" exact component={Overview} />
 									<Route path="/burn" exact component={Burn} />
 									<Route path="/dao" exact component={DAO} />
+									<Route path="/stake" exact component={Pools} />																
 									<Route path="/about" exact component={About} />
 								</Switch>
 							</div>

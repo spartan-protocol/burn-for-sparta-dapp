@@ -5,7 +5,7 @@ export const paneStyles = {
     borderStyle: 'solid',
     borderRadius: 5,
     borderColor: Colour().dgrey,
-    margin: 10,
+    margin: 0,
 }
 
 export const colStyles = {
