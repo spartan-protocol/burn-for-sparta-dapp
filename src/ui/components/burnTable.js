@@ -7,7 +7,7 @@ import { Click, Colour } from '../components'
 import { Button } from './elements'
 
 import {
-    BNB_ADDR, SPARTA_ADDR, getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract, 
+    BNB_ADDR, SPARTA_ADDR, getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract,
     getAssets, getTokenDetails, getListedTokens,
     getWalletData,
 } from '../../client/web3.js'
@@ -296,7 +296,8 @@ const ModalContent = (props) => {
                     <h3>BURN AN AMOUNT</h3>
                     <Input onChange={props.changeAmount}
                         placeholder={'Enter amount to burn'}
-                        allowClear={true}></Input>
+                        allowClear={true}>
+                        </Input>
                     <br /><br />
                     <h3>BURN A PROPORTION</h3>
                     <Button style={{ marginLeft: 10 }} onClick={() => props.set25(props.record)} type={'secondary'}>25%</Button>&nbsp;
@@ -308,6 +309,10 @@ const ModalContent = (props) => {
                     <h3>SPARTA VALUE</h3>
 
                     <h3 style={{ fontSize: 24 }}>{formatWei(props.spartaValue, 2, 2)}</h3>
+
+                    <h3>{props.symbol} BURN AMOUNT</h3>
+
+                    <h3 style={{ fontSize: 24 }}>{formatWei(props.claimAmount, 2, 2)}</h3>
 
                     {props.startTx &&
                         <LoadingOutlined style={{ color: Colour().white, fontSize: 24 }} />
