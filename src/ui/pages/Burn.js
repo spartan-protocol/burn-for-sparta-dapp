@@ -97,6 +97,44 @@ const Burn = () => {
 						</>
 					}
 				</TabPane>
+
+				<TabPane tab="TROUBLESHOOT WALLET" key="3" style={{ textAlign: "left" }}>
+				<h1>Stuck on connecting!</h1>
+				<ul>
+					<li>If you are using Brave browser, please disable shields for this website.</li>
+					<li></li>
+					<li>Refresh the page and ensure MetaMask has allowed the website.</li>
+					<li></li>
+					<li>Ensure it says "connected" in MetaMask, if not then you need to allow the wallet connection to the website.</li>
+				</ul>
+
+					<h1>Stuck pending transaction in MetaMask!</h1>
+					<ul>
+						<li>Simply click on the MetaMask extension, then click on the network selection box up the top and change it to "Main Ethereum Network".</li>
+						<li></li>
+						<li>Then change it back to "BSC Mainnet". The transaction will now fail, no fees will be charged and your queue will be cleared.</li>
+					</ul>
+
+					<h1>Ledger connection issues!</h1>
+					<ul>
+						<li>Ensure you lLedger has the latest firmware update.</li>
+						<li></li>
+						<li>Ensure all Ledger apps are up to date.</li>
+						<li></li>
+						<li>Make sure the ETH app is open and your Ledger is unlocked just beofre you action the metaMask submit button.</li>
+						<li></li>
+						<li>Try different USB cable.</li>
+						<li></li>
+						<li>Try different USB port.</li>
+						<li></li>
+						<li>Try different browser (if you are using Brave, try chrome or vice versa)</li>
+						<li></li>
+						<li>Try an older portable release Chrome Browser ailing that.</li>
+						<li></li>
+						<li>Even if your Ledger works perfectly normally you may have to do some or all of the above.</li>
+					</ul>
+				</TabPane>
+
 			</Tabs>
 			<Modal
 				title={`CONNECT`}
