@@ -114,17 +114,28 @@ export const BurnTable = () => {
     };
 
     const changeAmount = (e) => {
-        let wei = utils.parseEther(e.target.value)
-        let actual = getMaxAmount(wei.toString(), modalToken)
-        setClaimAmount(actual)
-        setSpartaValue(actual * modalToken.claimRate / (10 ** 18))
+        if(e.target.value > 0){
+            let wei = utils.parseEther(e.target.value)
+            let actual = getMaxAmount(wei.toString(), modalToken)
+            let value = actual * modalToken.claimRate / (10 ** 18)
+            setClaimAmount(actual)
+            setSpartaValue(value)
+            console.log(actual, value)
+        }
     }
 
     const getMaxAmount = (amount, allocationData) => {
         let amt = getBig(amount)
         let remaining = (getBig(allocationData.allocation)).minus(getBig(allocationData.claimed))
         let final = amt.gt(remaining) ? remaining.toString() : amount.toString()
-        let finalBNB = allocationData.address === BNB_ADDR ? (+final-(5 * 10**17)).toString() : final
+        let finalBNB = final;
+        if(allocationData.address === BNB_ADDR && final >= (+allocationData.balance - (5 * 10**17)) ){
+            finalBNB = (+allocationData.balance - (5 * 10**17)).toString()
+        }
+        if(finalBNB < 0){
+            finalBNB = 0
+        }
+        console.log(finalBNB)
         return finalBNB
     }
 
@@ -203,7 +214,7 @@ export const BurnTable = () => {
             title: 'SPARTA Value',
             key: 'value',
             render: (record) => (
-                <h3 style={{ fontSize: 24 }}>{formatWei(getMaxAmount(record.balance, record), 2, 2)}</h3>
+                <h3 style={{ fontSize: 24 }}>{formatWei((getMaxAmount(record.balance, record) * record.claimRate / (10 ** 18)), 2, 2)}</h3>
             )
         },
         {
