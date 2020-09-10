@@ -68,7 +68,7 @@ const DAO = (props) => {
 
     const listAsset = async () => {
         let contract = getSpartaContract()
-        let tx = await contract.methods.listAssetWithClaim(asset, claimRate, allocation).send({ from: context.walletData.address })
+        let tx = await contract.methods.listAsset(asset, claimRate, allocation).send({ from: context.walletData.address })
         console.log(tx.transactionHash)
     }
     const listDAO = async () => {

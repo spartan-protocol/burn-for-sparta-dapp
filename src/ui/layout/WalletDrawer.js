@@ -72,7 +72,7 @@ export const AssetTable = () => {
                 pagination={false}
                 showHeader={false}
                 columns={columns}
-                rowKey="symbol" />
+                rowKey="address" />
         </div>
     )
 }
