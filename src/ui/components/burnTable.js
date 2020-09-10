@@ -310,7 +310,7 @@ const ModalContent = (props) => {
 
                     <h3 style={{ fontSize: 24 }}>{formatWei(props.spartaValue, 2, 2)}</h3>
 
-                    <h3>{props.symbol} BURN AMOUNT</h3>
+                    <h3>BURN AMOUNT</h3>
 
                     <h3 style={{ fontSize: 24 }}>{formatWei(props.claimAmount, 2, 2)}</h3>
 
