@@ -64,7 +64,7 @@ export const SpartanPane = () => {
         // let web3 = new Web3(new Web3.providers.HttpProvider('https://chain-api.singapore-01.ankr.com/7129aa8e-7000-4b28-9ae2-4c80dbcfd4d3'))
         let web3 = new Web3(Web3.givenProvider)
         let contract = new web3.eth.Contract(ERC20_ABI, SPARTA_ADDR)
-        console.log(contract)
+        // console.log(contract)
         // let totalSupply = 'test'
 
         // let contract = await getTokenContract(SPARTA_ADDR)
