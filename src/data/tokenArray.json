@@ -13,9 +13,9 @@
       "name": "CanYaCoin",
       "symbol": "CAN",
       "address": "0x007ea5c0ea75a8df45d288a4debdd5bb633f9e56",
-      "allocation": 95827000000000000000000000,
-      "claimRate": 104354722572970000,
-      "snapshotPrice": "$0.0450",
+      "allocation": 75000000000000000000000000,
+      "claimRate": 133333333333333000,
+      "snapshotPrice": "$0.0400",
       "totalValue": "$3,000,000.00",
       "spartaAllocation": "10,000,000"
     }
