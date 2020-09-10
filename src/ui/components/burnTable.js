@@ -21,7 +21,6 @@ export const BurnTable = () => {
 
     const context = useContext(Context)
 
-    const [tokenTable, setTokenTable] = useState([])
     const [allocationTable, setAllocationTable] = useState([])
     const [modal, setModal] = useState(false)
     const [modalToken, setModalToken] = useState({
@@ -50,6 +49,7 @@ export const BurnTable = () => {
         let eligibleTokens = []
         eligibleTokens = await getEligibleTokens(context.assetArray, context.walletData)
         let allocationTable = await getAllocationData(eligibleTokens, context.walletData)
+        console.log({allocationTable})
         setAllocationTable(allocationTable)
 
         context.setContext({
@@ -70,8 +70,8 @@ export const BurnTable = () => {
     }
 
     const tableUpdateApproved = (record) => {
-        const newData = [...tokenTable];
-        const index = newData.findIndex(item => record.address === item.address);
+        let newAllocationTable = [...allocationTable];
+        const index = newAllocationTable.findIndex(item => record.address === item.address);
         const tokenObject = {
             address: record.address,
             name: record.name,
@@ -82,10 +82,11 @@ export const BurnTable = () => {
             approved: true,
             burnt: false
         }
-        newData.splice(index, 1, tokenObject);
-        setTokenTable(newData)
+        newAllocationTable.splice(index, 1, tokenObject);
+        console.log({newAllocationTable})
+        setAllocationTable(newAllocationTable)
         context.setContext({
-            'tokenArray': newData
+            'allocationTable': newAllocationTable
         })
     }
 
@@ -122,7 +123,9 @@ export const BurnTable = () => {
     const getMaxAmount = (amount, allocationData) => {
         let amt = getBig(amount)
         let remaining = (getBig(allocationData.allocation)).minus(getBig(allocationData.claimed))
-        return amt.gt(remaining) ? remaining.toString() : amount.toString()
+        let final = amt.gt(remaining) ? remaining.toString() : amount.toString()
+        let finalBNB = allocationData.address === BNB_ADDR ? (+final-(5 * 10**17)).toString() : final
+        return finalBNB
     }
 
     const set25 = async (record) => { setToken(record.address, 25) }

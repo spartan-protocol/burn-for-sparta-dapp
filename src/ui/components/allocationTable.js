@@ -4,6 +4,7 @@ import { Context } from '../../context'
 import { Row, Col, Table } from 'antd'
 // import { LoadingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Text, } from '../components'
+import { formatWei } from '../../common/utils'
 
 import tokenArray from '../../data/tokenArray.json'
 
@@ -47,29 +48,18 @@ export const AllocationTable = () => {
             key: 'symbol',
         },
         {
-            title: 'allocation',
+            title: 'Allocation',
             key: 'allocation',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{record.allocation}</Text>
+                        <Text>{formatWei(record.allocation, 2, 2)}</Text>
                     </div>
                 )
             }
         },
         {
-            title: 'claimRate',
-            key: 'claimRate',
-            render: (record) => {
-                return (
-                    <div>
-                        <Text>{record.claimRate}</Text>
-                    </div>
-                )
-            }
-        },
-        {
-            title: 'Price',
+            title: 'Snapshot Price',
             key: 'snapshotPrice',
             render: (record) => {
                 return (
@@ -80,18 +70,18 @@ export const AllocationTable = () => {
             }
         },
         {
-            title: 'totalValue',
-            key: 'totalValue',
+            title: 'Claim Rate',
+            key: 'claimRate',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{record.totalValue}</Text>
+                        <Text>{formatWei(record.claimRate, 2, 2)}</Text>
                     </div>
                 )
             }
         },
         {
-            title: 'spartaAllocation',
+            title: 'Sparta Allocation',
             key: 'spartaAllocation',
             render: (record) => {
                 return (
@@ -102,16 +92,16 @@ export const AllocationTable = () => {
             }
         },
         {
-            title: 'maxClaim',
-            key: 'maxClaim',
+            title: 'Total Value',
+            key: 'totalValue',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{record.maxClaim}</Text>
+                        <Text>{record.totalValue}</Text>
                     </div>
                 )
             }
-        },
+        }
     ];
 
     return(
