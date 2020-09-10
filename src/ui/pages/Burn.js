@@ -123,7 +123,7 @@ const ModalContent = (props) => {
                 <Col xs={24}>
                     <p>In order to use this DApp you will need to connect with Binance Smart Chain.</p>
                     <p>You need to set your Metamask to connect to a different network.</p>
-					<Click><a href='https://medium.com/@spartanprotocol/how-to-connect-metamask-to-bsc-testnet-7d89c111ab2' rel="noopener noreferrer" title="Burn Address" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>LEARN HERE -></a></Click>
+					<Click><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer" title="Burn Address" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>LEARN HERE -></a></Click>
 					<br/><br/>
 					<p>If you have connected properly, click OK.</p>
                 </Col>
