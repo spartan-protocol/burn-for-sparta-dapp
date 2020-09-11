@@ -117,11 +117,13 @@ const Burn = () => {
 
 					<h1>Ledger connection issues!</h1>
 					<ul>
-						<li>Ensure you lLedger has the latest firmware update.</li>
+						<li>Ensure your Ledger has the latest firmware update.</li>
 						<li></li>
 						<li>Ensure all Ledger apps are up to date.</li>
 						<li></li>
-						<li>Make sure the ETH app is open and your Ledger is unlocked just beofre you action the metaMask submit button.</li>
+						<li>After updating apps, make sure 'contract data' is enabled in the ETH app, this reverts when you update apps!</li>
+						<li></li>
+						<li>Make sure the ETH app is open and your Ledger is unlocked just before you action the MetaMask submit button.</li>
 						<li></li>
 						<li>Try different USB cable.</li>
 						<li></li>
@@ -129,10 +131,13 @@ const Burn = () => {
 						<li></li>
 						<li>Try different browser (if you are using Brave, try chrome or vice versa)</li>
 						<li></li>
-						<li>Try an older portable release Chrome Browser ailing that.</li>
+						<li>Try an older portable release Chrome-forked browser failing that.</li>
 						<li></li>
-						<li>Even if your Ledger works perfectly normally you may have to do some or all of the above.</li>
+						<li>Even if your Ledger works normally elsewhere, you may have to do some or all of the above.</li>
+						<li></li>
+						<li>LEDGERS ARE EXTREMELY PICKY!</li>
 					</ul>
+					<h1>Reach out on telegram for assistance ONLY after you have tried all of the above!</h1>
 				</TabPane>
 
 			</Tabs>
