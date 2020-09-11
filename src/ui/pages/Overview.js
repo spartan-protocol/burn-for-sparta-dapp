@@ -15,17 +15,18 @@ const Overview = (props) => {
 		<div>
 			<Row>
 				<Col xs={24}>
-					<h1 style={{ fontSize: 48 }}>SPARTA</h1>
+					<h1 style={{ fontSize: 48, textAlign:"Center" }}>SPARTA</h1>
 					<span style={{
 						marginBottom: "0.56rem",
-						display: "block"
+						display: "block",
+						textAlign:"Center"
 					}}>
 						A PROTOCOL FOR INCENTIVISED LIQUIDITY AND SYNTHETIC ASSETS ON BINANCE SMART CHAIN
 					</span>
 					<Row>
 						<Col xs={24} sm={24}>
 							<p style={{
-								textAlign: "justify"
+								textAlign: "center"
 							}}>
 								<Abstract />
 							</p>
@@ -34,28 +35,46 @@ const Overview = (props) => {
 				</Col>
 			</Row>
 			<br />
-			<Row>
-				<Col xs={8} style={{padding:10}}>
-					<h1 style={{ fontSize: 48 }}>1</h1> <h1>SEND</h1>
-					<h2>Send your BNB and BEP2 Assets from Binance Chain to Binance Smart Chain.</h2>
-					<Click size={18}><a href='https://www.binance.org/en/smartChain' rel="noopener noreferrer" style={{ color: Colour().gold}}>SEND&nbsp;>></a></Click>
+			<Row type="flex" justify="space-between">
+				<Col span={7} className="sparta-tile">
+					<Row>
+						<h1 style={{ fontSize: 48 }}>1</h1> <h1>SEND</h1>
+					</Row>
+					<Row>
+						<h2>Send BNB & BEP2 assets from Binance Chain to Binance Smart Chain</h2>
+					</Row>
+					<Row>
+						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/swap-bep2-token-for-its-bep20-equivalent-a5054eec314d' rel="noopener noreferrer">SEND</a></div>
+					</Row>
 				</Col>
-				<Col xs={8} style={{padding:10}}>
-					<h1 style={{ fontSize: 48 }}>2</h1>  <h1>CONNECT</h1>
-					<h2> Connect your Metamask with Binance Smart Chain.</h2>
-					<Click size={18}><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer"style={{ color: Colour().gold}}>CONNECT&nbsp;>></a></Click>
+				<Col span={7} className="sparta-tile">
+					<Row>
+						<h1 style={{ fontSize: 48 }}>2</h1>  <h1>CONNECT</h1>
+					</Row>
+					<Row>
+						<h2>Connect your MetaMask wallet with Binance Smart Chain</h2>
+					</Row>
+					<Row type="flex" align="middle">
+						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer">CONNECT</a></div>
+					</Row>
 				</Col>
-				<Col xs={8} style={{padding:10}}>
-					<h1 style={{ fontSize: 48 }}>3</h1>  <h1>BURN</h1>
-					<h2> Burn BNB and BEP20 assets to acquire your share of the 100,000,000 initial SPARTA.</h2>
-					<Click size={18}><a href={window.location.origin + '/burn'} rel="noopener noreferrer" style={{ color: Colour().gold}}>BURN&nbsp;>></a></Click>
+				<Col span={7} className="sparta-tile">
+					<Row>
+						<h1 style={{ fontSize: 48 }}>3</h1>  <h1>BURN</h1>
+					</Row>
+					<Row>
+						<h2>Burn BNB & BEP20 assets. Acquire your share of the 100m initial SPARTA</h2>
+					</Row>
+					<Row>
+						<div className='sparta-button'><a href={window.location.origin + '/burn'} rel="noopener noreferrer">BURN</a></div>
+					</Row>
 				</Col>
 			</Row>
 
 			<SpartanPane/>
 			<hr />
-			<Row>
-				<Col sm={8}>
+			<Row style={{textAlign:"center"}}>
+				<Col sm={24}>
 					<h1>LEARN MORE</h1>
 					<UsefulLinks />
 				</Col>
