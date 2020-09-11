@@ -5,8 +5,6 @@ import { Abstract } from '../components/abstract'
 import { SpartanPane } from '../components/SpartanPane'
 import { UsefulLinks } from '../components/usefulLinks'
 
-import { Colour, Click } from '../components'
-
 import '../../App.less'
 
 const Overview = (props) => {
