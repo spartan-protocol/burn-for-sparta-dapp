@@ -9,7 +9,12 @@ export const UsefulLinks = (props) => {
         <>
             <Row>
                 <Col>
-                    <Click><a href={`${getExplorerURL()}token/${SPARTA_ADDR}`} rel="noopener noreferrer" title="Etherscan Link" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>SPARTAN CONTRACT -></a></Click>
+                  <Row>
+                    <Click><a href={`${getExplorerURL()}token/${SPARTA_ADDR}`} rel="noopener noreferrer" title="Etherscan Link" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>SPARTAN CONTRACT</a></Click>
+                  </Row>
+                  <Row>
+                    <Click><a href="https://youtu.be/7yS2rQMbrnA" rel="noopener noreferrer" title="Video Guide to Burn for SPARTA" target="_blank" style={{ color: Colour().gold, fontSize: 12 }}>Video guide to burning tokens for SPARTA</a></Click>
+                  </Row>
                 </Col>
             </Row>
         </>
