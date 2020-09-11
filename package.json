@@ -5,6 +5,9 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@craco/craco": "^5.6.4",
+    "@trustwallet/walletconnect": "0.0.12",
+    "@walletconnect/client": "^1.2.2",
+    "@walletconnect/qrcode-modal": "^1.2.2",
     "antd": "^3.25.0",
     "axios": "^0.19.2",
     "bignumber": "^1.1.0",

@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/jpthor/.nvm/versions/node/v13.12.0/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js build
+  /Users/jpthor/.nvm/versions/node/v13.12.0/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js add @trustwallet
 
 PATH: 
   /Users/jpthor/.nvm/versions/node/v13.12.0/bin:/usr/local/opt/python/libexec/bin:/Users/jpthor/google-cloud-sdk/bin:/Users/jpthor/go/bin:/usr/local/lib/node_modules/node/bin:/Users/jpthor/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/jpthor/.nvm/versions/node/v13.12.0/bin:/usr/local/opt/python/libexec/bin:/Users/jpthor/google-cloud-sdk/bin:/Users/jpthor/go/bin:/usr/local/lib/node_modules/node/bin:/Users/jpthor/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin
@@ -14,12 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/jpthor/dev/spartan-protocol/spartan-dapp-v1/package.json: Unexpected token } in JSON at position 895
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:304:30)
-      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:315:13
+  Error: https://registry.yarnpkg.com/@trustwallet: Request "https://registry.yarnpkg.com/@trustwallet" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:66935:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:140564:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:141536:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:141458:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1201:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -29,6 +34,7 @@ npm manifest:
     "dependencies": {
       "@ant-design/icons": "^4.2.2",
       "@craco/craco": "^5.6.4",
+      "@walletconnect/qrcode-modal": "^1.2.2",
       "antd": "^3.25.0",
       "axios": "^0.19.2",
       "bignumber": "^1.1.0",
@@ -56,7 +62,7 @@ npm manifest:
       "start": "craco start",
       "build": "craco build",
       "test": "craco test",
-      "eject": "react-scripts eject",
+      "eject": "react-scripts eject"
     },
     "eslintConfig": {
       "extends": "react-app"
@@ -1907,6 +1913,37 @@ Lockfile:
       semver "^6.3.0"
       tsutils "^3.17.1"
   
+  "@walletconnect/mobile-registry@^1.2.2":
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/@walletconnect/mobile-registry/-/mobile-registry-1.2.2.tgz#f0a01ec9d682d2097f45d941b9e8594903217074"
+    integrity sha512-ZkxF9yq+5ygXGf4Z0vI3EkixU9B66UC0FVu33UxVN2YgUgzgPzakhANbsL1+5reVMDJRebyX/7qZX8uEXL+0Ow==
+  
+  "@walletconnect/qrcode-modal@^1.2.2":
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/@walletconnect/qrcode-modal/-/qrcode-modal-1.2.2.tgz#99e5325f5ea858964436bb3602720a4a8f01b1b9"
+    integrity sha512-ZuQgT2UsGUARmLp1nUuBoA62qY1y7cO/8j3EkjtVgJN8eeYSxtVDNGc94um42VKIAWnRAT26Uk8/XvN/Mmus+A==
+    dependencies:
+      "@walletconnect/mobile-registry" "^1.2.2"
+      "@walletconnect/types" "^1.2.2"
+      "@walletconnect/utils" "^1.2.2"
+      preact "10.4.1"
+      qrcode "1.4.4"
+  
+  "@walletconnect/types@^1.2.2":
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/@walletconnect/types/-/types-1.2.2.tgz#24f2aa9f21c34b97ffeb2757533d26d3bf09b5a6"
+    integrity sha512-kaG5HwlymtQENcO8TbkfT5ORNgAn2GYuhtiKUNWSq7bmJ05PcoaGmtHf/rXaYLiEf+QLp/5JAClT+iHc3eMgsA==
+  
+  "@walletconnect/utils@^1.2.2":
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/@walletconnect/utils/-/utils-1.2.2.tgz#9c0d7bc9a3b3f4a1b5a5b2773fb1edebf1c50f3a"
+    integrity sha512-FqCxZVijQnJfGapXsYC6D8D5MyX5gp+1AIpBfCmFh6PEIlAH4JDwPZ7RXsWDuSqnXVo5gzsz+VLP5Nac2YoPDQ==
+    dependencies:
+      "@walletconnect/types" "^1.2.2"
+      detect-browser "5.1.0"
+      enc-utils "2.1.0"
+      js-sha3 "0.8.0"
+  
   "@web3-js/scrypt-shim@^0.1.0":
     version "0.1.0"
     resolved "https://registry.yarnpkg.com/@web3-js/scrypt-shim/-/scrypt-shim-0.1.0.tgz#0bf7529ab6788311d3e07586f7d89107c3bea2cc"
@@ -3001,7 +3038,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/buffer-fill/-/buffer-fill-1.0.0.tgz#f8f78b76789888ef39f205cd637f68e702122b2c"
     integrity sha1-+PeLdniYiO858gXNY39o5wISKyw=
   
-  buffer-from@^1.0.0:
+  buffer-from@^1.0.0, buffer-from@^1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
     integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
@@ -3034,6 +3071,14 @@ Lockfile:
     version "5.5.0"
     resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.5.0.tgz#9c3caa3d623c33dd1c7ef584b89b88bf9c9bc1ce"
     integrity sha512-9FTEDjLjwoAkEwyMGDjYJQN2gfRgOKBKRfiglhvibGbpeeU/pQn1bJxQqm32OD/AIeEuHxU9roxXxg34Byp/Ww==
+    dependencies:
+      base64-js "^1.0.2"
+      ieee754 "^1.1.4"
+  
+  buffer@^5.4.3:
+    version "5.6.0"
+    resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.6.0.tgz#a31749dc7d81d84db08abf937b6b8c4033f62786"
+    integrity sha512-/gDYp/UtU0eA1ys8bOs9J6a+E/KWIY+DZ+Q2WESNUA0jFRsJOc0SNUO6xJ5SGA1xueg3NL65W6s+NY5l9cunuw==
     dependencies:
       base64-js "^1.0.2"
       ieee754 "^1.1.4"
@@ -3183,15 +3228,10 @@ Lockfile:
       lodash.memoize "^4.1.2"
       lodash.uniq "^4.5.0"
   
-  caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035:
-    version "1.0.30001035"
-    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001035.tgz#2bb53b8aa4716b2ed08e088d4dc816a5fe089a1e"
-    integrity sha512-C1ZxgkuA4/bUEdMbU5WrGY4+UhMFFiXrgNAfxiMIqWgFTWfv/xsZCS2xEHT2LMq7xAZfuAnu6mcqyDl0ZR6wLQ==
-  
-  caniuse-lite@^1.0.30001038:
-    version "1.0.30001041"
-    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001041.tgz#c2ea138dafc6fe03877921ddcddd4a02a14daf76"
-    integrity sha512-fqDtRCApddNrQuBxBS7kEiSGdBsgO4wiVw4G/IClfqzfhW45MbTumfN4cuUJGTM0YGFNn97DCXPJ683PS6zwvA==
+  caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001038:
+    version "1.0.30001124"
+    resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001124.tgz"
+    integrity sha512-zQW8V3CdND7GHRH6rxm6s59Ww4g/qGWTheoboW9nfeMg7sUoopIfKCcNZUjwYRCOrvereh3kwDpZj4VLQ7zGtA==
   
   capture-exit@^2.0.0:
     version "2.0.0"
@@ -4266,6 +4306,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
     integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
   
+  detect-browser@5.1.0:
+    version "5.1.0"
+    resolved "https://registry.yarnpkg.com/detect-browser/-/detect-browser-5.1.0.tgz#0c51c66b747ad8f98a6832bf3026a5a23a7850ff"
+    integrity sha512-WKa9p+/MNwmTiS+V2AS6eGxic+807qvnV3hC+4z2GTY+F42h1n8AynVTMMc4EJBC32qMs6yjOTpeDEQQt/AVqQ==
+  
   detect-newline@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
@@ -4297,6 +4342,11 @@ Lockfile:
       bn.js "^4.1.0"
       miller-rabin "^4.0.0"
       randombytes "^2.0.0"
+  
+  dijkstrajs@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/dijkstrajs/-/dijkstrajs-1.0.1.tgz#d3cd81221e3ea40742cfcde556d4e99e98ddc71b"
+    integrity sha1-082BIh4+pAdCz83lVtTpnpjdxxs=
   
   dir-glob@2.0.0:
     version "2.0.0"
@@ -4563,6 +4613,15 @@ Lockfile:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
     integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
+  
+  enc-utils@2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/enc-utils/-/enc-utils-2.1.0.tgz#f6c28c3d4bb38fb409a93185848cf361f4fde142"
+    integrity sha512-VD0eunGDyzhojePzkORWDnW88gi6tIeGb5Z6QVHugux6mMAPiXyw94fb/7WdDQEWhKMSoYRyzFFUebCqeH20PA==
+    dependencies:
+      bn.js "4.11.8"
+      is-typedarray "1.0.0"
+      typedarray-to-buffer "3.1.5"
   
   encodeurl@~1.0.2:
     version "1.0.2"
@@ -6738,7 +6797,7 @@ Lockfile:
     dependencies:
       has-symbols "^1.0.1"
   
-  is-typedarray@^1.0.0, is-typedarray@~1.0.0:
+  is-typedarray@1.0.0, is-typedarray@^1.0.0, is-typedarray@~1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
     integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
@@ -6767,6 +6826,11 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
     integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
+  
+  isarray@^2.0.1:
+    version "2.0.5"
+    resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.5.tgz#8af1e4c1221244cc62459faf38940d4e644a5723"
+    integrity sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==
   
   isexe@^2.0.0:
     version "2.0.0"
@@ -7243,7 +7307,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.5.7.tgz#0d4ffd8002d5333aabaf4a23eed2f6374c9f28e7"
     integrity sha1-DU/9gALVMzqrr0oj7tL2N0yfKOc=
   
-  js-sha3@^0.8.0:
+  js-sha3@0.8.0, js-sha3@^0.8.0:
     version "0.8.0"
     resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.8.0.tgz#b9b7a5da73afad7dedd0f8c463954cbde6818840"
     integrity sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==
@@ -9041,6 +9105,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
     integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
   
+  pngjs@^3.3.0:
+    version "3.4.0"
+    resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
+    integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
+  
   pnp-webpack-plugin@1.6.4:
     version "1.6.4"
     resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.4.tgz#c9711ac4dc48a685dabafc86f8b6dd9f8df84149"
@@ -9723,6 +9792,11 @@ Lockfile:
       source-map "^0.6.1"
       supports-color "^6.1.0"
   
+  preact@10.4.1:
+    version "10.4.1"
+    resolved "https://registry.yarnpkg.com/preact/-/preact-10.4.1.tgz#9b3ba020547673a231c6cf16f0fbaef0e8863431"
+    integrity sha512-WKrRpCSwL2t3tpOOGhf2WfTpcmbpxaWtDbdJdKdjd0aEiTkvOmS4NBkG6kzlaAHI9AkQ3iVqbFWM3Ei7mZ4o1Q==
+  
   prelude-ls@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -9901,6 +9975,19 @@ Lockfile:
     version "1.5.1"
     resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
     integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
+  
+  qrcode@1.4.4:
+    version "1.4.4"
+    resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.4.4.tgz#f0c43568a7e7510a55efc3b88d9602f71963ea83"
+    integrity sha512-oLzEC5+NKFou9P0bMj5+v6Z40evexeE29Z9cummZXZ9QXyMr3lphkURzxjXgPJC5azpxcshoDWV1xE46z+/c3Q==
+    dependencies:
+      buffer "^5.4.3"
+      buffer-alloc "^1.2.0"
+      buffer-from "^1.1.1"
+      dijkstrajs "^1.0.1"
+      isarray "^2.0.1"
+      pngjs "^3.3.0"
+      yargs "^13.2.4"
   
   qs@6.7.0:
     version "6.7.0"
@@ -12287,7 +12374,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/type/-/type-2.0.0.tgz#5f16ff6ef2eb44f260494dae271033b29c09a9c3"
     integrity sha512-KBt58xCHry4Cejnc2ISQAF7QY+ORngsWfxezO68+12hKV6lQY8P/psIkcbjeHWn7MqcgciWJyCCevFMJdIXpow==
   
-  typedarray-to-buffer@^3.1.5:
+  typedarray-to-buffer@3.1.5, typedarray-to-buffer@^3.1.5:
     version "3.1.5"
     resolved "https://registry.yarnpkg.com/typedarray-to-buffer/-/typedarray-to-buffer-3.1.5.tgz#a97ee7a9ff42691b9f783ff1bc5112fe3fca9080"
     integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
@@ -13391,7 +13478,7 @@ Lockfile:
       y18n "^3.2.1 || ^4.0.0"
       yargs-parser "^11.1.1"
   
-  yargs@^13.3.0:
+  yargs@^13.2.4, yargs@^13.3.0:
     version "13.3.2"
     resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.3.2.tgz#ad7ffefec1aa59565ac915f82dccb38a9c31a2dd"
     integrity sha512-AX3Zw5iPruN5ie6xGRIDgqkT+ZhnRlZMLMHAs8tg7nRruy2Nb+i5o9bwghAogtM08q1dpr2LVoS8KSTMYpWXUw==

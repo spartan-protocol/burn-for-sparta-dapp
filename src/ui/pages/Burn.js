@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
 import { LabelGrey } from '../components'
-import { BurnTable } from '../components/burnTable'
+import { BurnTable, TestTx } from '../components/burnTable'
 import { AllocationTable } from '../components/allocationTable'
 
 import { Click, Colour, Center, Button } from "../components"
@@ -30,7 +30,7 @@ const Burn = () => {
 			setLoaded(true)
 			setTab('1')
 			if(!context.connectedBSC){
-				setModal(true)
+				// setModal(true)
 			}
 		}
 		// eslint-disable-next-line
@@ -46,7 +46,7 @@ const Burn = () => {
 
 	const handleOk = () => {
 		setConfirmLoading(true)
-		context.setContext({connectedBSC:true})
+		// context.setContext({connectedBSC:true})
 		setModal(false)
 	};
 
@@ -68,6 +68,7 @@ const Burn = () => {
 							<a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank" style={{ color: "#C7692B", fontSize: 12 }}>Download Metamask</a>
 						</>
 					}
+					<TestTx/>
 					{!safari && context.connectedBSC &&
 						<>
 							<BurnTable />

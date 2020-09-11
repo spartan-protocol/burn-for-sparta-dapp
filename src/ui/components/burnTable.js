@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
+import Web3 from 'web3'
+
 import { Row, Col, Table, message, Modal, Input } from 'antd'
 // import { LoadingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Click, Colour } from '../components'
 import { Button } from './elements'
 
 import {
-    BNB_ADDR, SPARTA_ADDR, getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract,
+    BNB_ADDR, SPARTA_ADDR, SPARTA_ABI, nodeAPI,
+    getTokenData, getTokenContract, getAllocationData, getEligibleTokens, getSpartaContract,
     getAssets, getTokenDetails, getListedTokens,
     getWalletData,
 } from '../../client/web3.js'
@@ -49,7 +52,7 @@ export const BurnTable = () => {
         let eligibleTokens = []
         eligibleTokens = await getEligibleTokens(context.assetArray, context.walletData)
         let allocationTable = await getAllocationData(eligibleTokens, context.walletData)
-        console.log({allocationTable})
+        console.log({ allocationTable })
         setAllocationTable(allocationTable)
 
         context.setContext({
@@ -83,7 +86,7 @@ export const BurnTable = () => {
             burnt: false
         }
         newAllocationTable.splice(index, 1, tokenObject);
-        console.log({newAllocationTable})
+        console.log({ newAllocationTable })
         setAllocationTable(newAllocationTable)
         context.setContext({
             'allocationTable': newAllocationTable
@@ -114,7 +117,7 @@ export const BurnTable = () => {
     };
 
     const changeAmount = (e) => {
-        if(e.target.value > 0){
+        if (e.target.value > 0) {
             let wei = utils.parseEther(e.target.value)
             let actual = getMaxAmount(wei.toString(), modalToken)
             let value = actual * modalToken.claimRate / (10 ** 18)
@@ -129,10 +132,10 @@ export const BurnTable = () => {
         let remaining = (getBig(allocationData.allocation)).minus(getBig(allocationData.claimed))
         let final = amt.gt(remaining) ? remaining.toString() : amount.toString()
         let finalBNB = final;
-        if(allocationData.address === BNB_ADDR && final >= (+allocationData.balance - (5 * 10**17)) ){
-            finalBNB = (+allocationData.balance - (5 * 10**17)).toString()
+        if (allocationData.address === BNB_ADDR && final >= (+allocationData.balance - (5 * 10 ** 17))) {
+            finalBNB = (+allocationData.balance - (5 * 10 ** 17)).toString()
         }
-        if(finalBNB < 0){
+        if (finalBNB < 0) {
             finalBNB = 0
         }
         console.log(finalBNB)
@@ -169,6 +172,8 @@ export const BurnTable = () => {
         setModal(false)
         refreshWallet()
     }
+
+
 
     const refreshWallet = async () => {
         message.loading('Loading tokens', 3);
@@ -286,6 +291,39 @@ export const BurnTable = () => {
 
 export default BurnTable
 
+export const TestTx = () => {
+
+    const context = useContext(Context)
+
+    const sendTx = async () => {
+        let web3 = new Web3(Web3.givenProvider || nodeAPI())
+        var contract = new web3.eth.Contract(SPARTA_ABI, SPARTA_ADDR)
+
+        let connector = context.wallet.walletConnector
+
+        let claimAmount = '1000000000000000000'
+
+        // let contract = getSpartaContract()
+        var getData = contract.methods.claim.getData(BNB_ADDR, claimAmount);
+        const tx = {
+            from: context.walletData.address,
+            to: SPARTA_ADDR,
+            gasPrice: '',
+            gas: '',
+            data: getData,
+        };
+
+        const result = await connector.sendTransaction(tx);
+        console.log(result)
+    }
+
+    return (
+        <>
+            <Button type="primary" onClick={sendTx}>SEND</Button>
+        </>
+    )
+}
+
 const ModalContent = (props) => {
 
     return (
@@ -297,7 +335,7 @@ const ModalContent = (props) => {
                     <Input onChange={props.changeAmount}
                         placeholder={'Enter amount to burn'}
                         allowClear={true}>
-                        </Input>
+                    </Input>
                     <br /><br />
                     <h3>BURN A PROPORTION</h3>
                     <Button style={{ marginLeft: 10 }} onClick={() => props.set25(props.record)} type={'secondary'}>25%</Button>&nbsp;
