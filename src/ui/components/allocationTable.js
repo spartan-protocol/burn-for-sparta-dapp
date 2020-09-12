@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
-import { Row, Col, Table } from 'antd'
+import { Row, Col, Table, Progress } from 'antd'
 // import { LoadingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { Text, } from '../components'
+import { Text, Colour, } from '../components'
 import { formatWei } from '../../common/utils'
 
 import tokenArray from '../../data/tokenArray.json'
+import { getSpartaContract } from '../../client/web3'
 
 export const AllocationTable = () => {
 
@@ -21,7 +22,17 @@ export const AllocationTable = () => {
 
     const loadTokenData = async () => {
 
+        let contract = getSpartaContract()
+
+        for(let i = 0; i<tokenArray.length; i++){
+            let data = await contract.methods.getAssetDetails(tokenArray[i].address).call()
+            // console.log(data.claimed)
+            tokenArray[i].claimed = data.claimed
+        }
+        console.log({tokenArray})
         setTokenTable(tokenArray)
+
+        
 
         context.setContext({
             'tokenArray': tokenArray
@@ -60,6 +71,18 @@ export const AllocationTable = () => {
             }
         },
         {
+            title: 'Progress',
+            key: 'progress',
+            render: (record) => {
+                return (
+                    <div>
+                        <Progress percent={(+record.claimed / +record.allocation)*100} 
+                        status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
+                    </div>
+                )
+            }
+        },
+        {
             title: 'Snapshot Price',
             key: 'snapshotPrice',
             render: (record) => {
@@ -70,17 +93,17 @@ export const AllocationTable = () => {
                 )
             }
         },
-        {
-            title: 'Claim Rate',
-            key: 'claimRate',
-            render: (record) => {
-                return (
-                    <div>
-                        <Text>{formatWei(record.claimRate, 2, 2)}</Text>
-                    </div>
-                )
-            }
-        },
+        // {
+        //     title: 'Claim Rate',
+        //     key: 'claimRate',
+        //     render: (record) => {
+        //         return (
+        //             <div>
+        //                 <Text>{formatWei(record.claimRate, 2, 2)}</Text>
+        //             </div>
+        //         )
+        //     }
+        // },
         {
             title: 'Sparta Allocation',
             key: 'spartaAllocation',

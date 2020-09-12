@@ -101,9 +101,11 @@ const Burn = () => {
 
 			</Tabs>
 
-			<Tabs defaultActiveKey='1' activeKey={tab} onChange={onChange} size={'large'} style={{ marginTop: 0, textAlign: "center" }}>
+			<br/><br/>
 
-				<TabPane tab="TOKENS MISSING?" key="1" style={{ textAlign: "left" }}>
+			<Tabs defaultActiveKey='3' activeKey={tab} onChange={onChange} size={'large'} style={{ marginTop: 0, textAlign: "center" }}>
+
+				<TabPane tab="TOKENS MISSING?" key="3" style={{ textAlign: "left" }}>
 				<h1>Are Your Tokens Missing on MetaMask?</h1>
 				<ul>
 					<li>Don't worry! You probably have not yet added your custom token.</li>
@@ -118,7 +120,7 @@ const Burn = () => {
 				</ul>
 				</TabPane>
 
-				<TabPane tab="TROUBLESHOOTING" key="2" style={{ textAlign: "left" }}>
+				<TabPane tab="TROUBLESHOOTING" key="4" style={{ textAlign: "left" }}>
 				<h1>Stuck on connecting!</h1>
 				<ul>
 					<li>If you are using Brave browser, please disable shields for this website.</li>
