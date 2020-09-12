@@ -18,5 +18,15 @@
       "snapshotPrice": "$0.0400",
       "totalValue": "$3,000,000.00",
       "spartaAllocation": "10,000,000"
+    },
+    {
+      "name": "RAVEN PROTOCOL",
+      "symbol": "RAVEN",
+      "address": "0xcd7c5025753a49f1881b31c48caa7c517bb46308",
+      "allocation": 1500000000000000000000000000,
+      "claimRate": 3333333333333330,
+      "snapshotPrice": "$0.001",
+      "totalValue": "$1,500,000.00",
+      "spartaAllocation": "5,000,000"
     }
   ]
