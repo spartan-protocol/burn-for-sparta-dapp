@@ -3,9 +3,9 @@
       "name": "Binance Chain Token",
       "symbol": "BNB",
       "address": "0x0000000000000000000000000000000000000000",
-      "allocation": 132625994694960000000000,
-      "claimRate": 75400000000000000000,
-      "snapshotPrice": "$22.62",
+      "allocation": 130434782608696000000000,
+      "claimRate": 76666666666666700000,
+      "snapshotPrice": "$23",
       "totalValue": "$3,000,000.00",
       "spartaAllocation": "10,000,000"
     },
