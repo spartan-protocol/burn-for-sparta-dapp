@@ -238,7 +238,7 @@ export const BurnTable = () => {
                 }
                 return (
                     <div>
-                        {(approved && !burnt) &&
+                        {(approved && !burnt && +record.claimed < +record.allocation) &&
                             <div>
                                 <Button type="primary" onClick={() => showModal(record)}>CLAIM</Button>
                             </div>
