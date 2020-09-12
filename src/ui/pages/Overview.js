@@ -22,7 +22,7 @@ const Overview = (props) => {
 						A PROTOCOL FOR INCENTIVISED LIQUIDITY AND SYNTHETIC ASSETS ON BINANCE SMART CHAIN
 					</span>
 					<Row>
-						<Col xs={24} sm={24}>
+						<Col xs={24}>
 							<p style={{
 								textAlign: "center"
 							}}>
@@ -33,10 +33,10 @@ const Overview = (props) => {
 				</Col>
 			</Row>
 			<br />
-			<Row type="flex" justify="space-between">
-				<Col span={7} className="sparta-tile">
+			<Row type="flex" justify="space-around">
+				<Col md={7} className="sparta-tile">
 					<Row>
-						<h1 style={{ fontSize: 48 }}>1</h1> <h1>SEND</h1>
+						<h1>1</h1> <h1>SEND</h1>
 					</Row>
 					<Row>
 						<h2>Send BNB & BEP2 assets from Binance Chain to Binance Smart Chain</h2>
@@ -45,9 +45,9 @@ const Overview = (props) => {
 						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/swap-bep2-token-for-its-bep20-equivalent-a5054eec314d' rel="noopener noreferrer">SEND</a></div>
 					</Row>
 				</Col>
-				<Col span={7} className="sparta-tile">
+				<Col md={7} className="sparta-tile">
 					<Row>
-						<h1 style={{ fontSize: 48 }}>2</h1>  <h1>CONNECT</h1>
+						<h1>2</h1>  <h1>CONNECT</h1>
 					</Row>
 					<Row>
 						<h2>Connect your MetaMask wallet with Binance Smart Chain</h2>
@@ -56,9 +56,9 @@ const Overview = (props) => {
 						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer">CONNECT</a></div>
 					</Row>
 				</Col>
-				<Col span={7} className="sparta-tile">
+				<Col md={7} className="sparta-tile">
 					<Row>
-						<h1 style={{ fontSize: 48 }}>3</h1>  <h1>BURN</h1>
+						<h1>3</h1>  <h1>BURN</h1>
 					</Row>
 					<Row>
 						<h2>Burn BNB & BEP20 assets. Acquire your share of the 100m initial SPARTA</h2>
