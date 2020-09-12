@@ -28,5 +28,15 @@
       "snapshotPrice": "$0.001",
       "totalValue": "$1,500,000.00",
       "spartaAllocation": "5,000,000"
+    },
+    {
+      "name": "Cubiex",
+      "symbol": "CBIX",
+      "address": "0x34681c1035f97e1edcccec5f142e02ff81a3a230",
+      "allocation": 81521739130434800000000000,
+      "claimRate": 15333333333333300,
+      "snapshotPrice": "$0.0046",
+      "totalValue": "$375,000.00",
+      "spartaAllocation": "1,250,000"
     }
   ]
