@@ -107,13 +107,13 @@ const Headbar = (props) => {
     return (
         <Header>
             <Row>
-                <Col xs={4}>
-                    <img src={logo} alt="SpartanLogo" style={{width:200, height:'auto'}}/>
+                <Col xs={8}>
+                    <a href="/"><img src={logo} alt="SpartanLogo" style={{width:220, height:'auto'}}/></a>
                 </Col>
-                <Col xs={16}>
-                    
+                <Col xs={8}>
+
                 </Col>
-                <Col xs={4} style={{ textAlign: 'right' }}>
+                <Col xs={8} style={{ textAlign: 'right' }}>
                     {!connected && !connecting &&
                         <Button type="primary" onClick={connectWallet}>CONNECT</Button>
                     }
