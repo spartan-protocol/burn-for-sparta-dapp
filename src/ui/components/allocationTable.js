@@ -32,6 +32,12 @@ export const AllocationTable = () => {
 
     const columns = [
         {
+            title: 'Symbol',
+            dataIndex: 'symbol',
+            key: 'symbol',
+            fixed: 'left',
+        },
+        {
             title: 'Name',
             key: 'name',
             render: (record) => {
@@ -41,11 +47,6 @@ export const AllocationTable = () => {
                     </div>
                 )
             }
-        },
-        {
-            title: 'Symbol',
-            dataIndex: 'symbol',
-            key: 'symbol',
         },
         {
             title: 'Allocation',
@@ -108,7 +109,7 @@ export const AllocationTable = () => {
         <div>
             <Row>
                 <Col xs={24} style={{ paddingRight: 50 }}>
-                    <Table dataSource={tokenTable} columns={columns} pagination={false} rowKey="address"></Table>
+                    <Table dataSource={tokenTable} columns={columns} pagination={false} rowKey="address" scroll={{ x: 1000 }}></Table>
                 </Col>
             </Row>
         </div>

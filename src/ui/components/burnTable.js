@@ -195,11 +195,20 @@ export const BurnTable = () => {
 
     const columns = [
         {
+            title: 'Symbol',
+            dataIndex: 'symbol',
+            key: 'symbol',
+            fixed: 'left',
+            render: (symbol) => (
+                <h3>{symbol}</h3>
+            )
+        },
+        {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
             render: (name) => (
-                <h3 style={{ fontSize: 24 }}>{name}</h3>
+                <h3>{name}</h3>
             )
         },
         {
@@ -207,14 +216,14 @@ export const BurnTable = () => {
             dataIndex: 'balance',
             key: 'balance',
             render: (balance) => (
-                <h3 style={{ fontSize: 24 }}>{formatWei(balance, 2, 2)}</h3>
+                <h3>{formatWei(balance, 2, 4)}</h3>
             )
         },
         {
             title: 'SPARTA Value',
             key: 'value',
             render: (record) => (
-                <h3 style={{ fontSize: 24 }}>{formatWei((getMaxAmount(record.balance, record) * record.claimRate / (10 ** 18)), 2, 2)}</h3>
+                <h3>{formatWei((getMaxAmount(record.balance, record) * record.claimRate / (10 ** 18)), 2, 2)}</h3>
             )
         },
         {
@@ -279,7 +288,7 @@ export const BurnTable = () => {
 
     return (
         <>
-            <Table style={tableStyles} dataSource={allocationTable} columns={columns} rowKey="address" />
+            <Table style={tableStyles} dataSource={allocationTable} columns={columns} rowKey="address" scroll={{ x: 500 }} />
         </>
     )
 }

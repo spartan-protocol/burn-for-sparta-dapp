@@ -57,6 +57,7 @@ const Burn = () => {
 	return (
 		<>
 			<Tabs defaultActiveKey='1' activeKey={tab} onChange={onChange} size={'large'} style={{ marginTop: 0, textAlign: "center" }}>
+
 				<TabPane tab="BURN ASSETS" key="1" style={{ textAlign: "left" }}>
 					<h1>CLAIM SPARTA</h1>
 					<h2>Claim your share of SPARTA by burning BNB and BEP20 assets.</h2>
@@ -98,7 +99,26 @@ const Burn = () => {
 					}
 				</TabPane>
 
-				<TabPane tab="TROUBLESHOOT WALLET" key="3" style={{ textAlign: "left" }}>
+			</Tabs>
+
+			<Tabs defaultActiveKey='1' activeKey={tab} onChange={onChange} size={'large'} style={{ marginTop: 0, textAlign: "center" }}>
+
+				<TabPane tab="TOKENS MISSING?" key="1" style={{ textAlign: "left" }}>
+				<h1>Are Your Tokens Missing on MetaMask?</h1>
+				<ul>
+					<li>Don't worry! You probably have not yet added your custom token.</li>
+					<li>- Click on MetaMask</li>
+					<li>- Click on assets</li>
+					<li>- Scroll down</li>
+					<li>- Click 'Add Token'</li>
+					<li>- Click 'Custom Token'</li>
+					<li><b>Token address for SPARTA:</b> 0xe4ae305ebe1abe663f261bc00534067c80ad677c</li>
+					<li><b>Token address for CAN:</b> 0x007ea5c0ea75a8df45d288a4debdd5bb633f9e56</li>
+					<li><b>Token address for RAVEN:</b> 0xcd7c5025753a49f1881b31c48caa7c517bb46308</li>
+				</ul>
+				</TabPane>
+
+				<TabPane tab="TROUBLESHOOTING" key="2" style={{ textAlign: "left" }}>
 				<h1>Stuck on connecting!</h1>
 				<ul>
 					<li>If you are using Brave browser, please disable shields for this website.</li>
@@ -141,6 +161,7 @@ const Burn = () => {
 				</TabPane>
 
 			</Tabs>
+
 			<Modal
 				title={`CONNECT`}
 				visible={modal}
