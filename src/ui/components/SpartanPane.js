@@ -102,7 +102,7 @@ export const SpartanPane = () => {
             <Col xs={24} sm={18} style={{ paddingLeft: 20 }}>
                 <Row>
                     <Col xs={24}>
-                        <Text size={32}> {spartanData.name}({spartanData.symbol})</Text>
+                        <Text size={32}> {spartanData.name} ({spartanData.symbol})</Text>
                     </Col>
                     <Col xs={0}>
                     </Col>
