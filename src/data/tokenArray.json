@@ -30,6 +30,16 @@
       "spartaAllocation": 5000000
     },
     {
+      "name": "DOS Network",
+      "symbol": "DOS",
+      "address": "0xDc0f0a5719c39764b011eDd02811BD228296887C",
+      "allocation": 7500000000000000000000000,
+      "claimRate": 666666666666667000,
+      "snapshotPrice": "$0.2000",
+      "totalValue": "$1,500,000.00",
+      "spartaAllocation": 5000000
+    },
+    {
       "name": "Cubiex",
       "symbol": "CBIX",
       "address": "0x34681c1035f97e1edcccec5f142e02ff81a3a230",
