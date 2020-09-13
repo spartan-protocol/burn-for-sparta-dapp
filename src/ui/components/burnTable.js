@@ -142,13 +142,22 @@ export const BurnTable = () => {
     const set25 = async (record) => { setToken(record.address, 25) }
     const set50 = async (record) => { setToken(record.address, 50) }
     const set75 = async (record) => { setToken(record.address, 75) }
-    const set100 = async (record) => { setToken(record.address, 100) }
+    const set100 = async (record) => { setMax(record.address) }
 
     const setToken = async (address, rate) => {
         const tokenData = await getTokenData(address, context.walletData)
         const amount = getBig(tokenData.balance)
         const finalAmount = (((amount.times(rate)).div(100).integerValue(1))).toFixed(0)
         let actual = getMaxAmount(finalAmount, modalToken)
+        console.log(actual, actual * modalToken.claimRate, modalToken)
+        setClaimAmount(actual)
+        setSpartaValue(actual * modalToken.claimRate / (10 ** 18))
+    }
+
+    const setMax = async (address) => {
+        const tokenData = await getTokenData(address, context.walletData)
+        const amount = getBig(tokenData.balance)
+        let actual = getMaxAmount(amount, modalToken)
         console.log(actual, actual * modalToken.claimRate, modalToken)
         setClaimAmount(actual)
         setSpartaValue(actual * modalToken.claimRate / (10 ** 18))
