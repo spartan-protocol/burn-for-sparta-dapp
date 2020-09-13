@@ -33,6 +33,8 @@ const Overview = (props) => {
 				</Col>
 			</Row>
 			<br />
+			<SpartanPane/>
+			<br />
 			<Row type="flex" justify="space-around">
 				<Col md={7} className="sparta-tile">
 					<Row>
@@ -69,7 +71,8 @@ const Overview = (props) => {
 				</Col>
 			</Row>
 
-			<SpartanPane/>
+			<br/>
+			<br/>
 			<Row style={{textAlign:"center"}}>
 				<Col sm={24}>
 					<h1>LEARN MORE</h1>

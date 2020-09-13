@@ -4,6 +4,7 @@ import { Row, Col, Layout, Drawer } from 'antd';
 import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Button } from '../components/elements'
 
+import axios from 'axios'
 import Web3 from 'web3'
 import { message } from 'antd';
 
@@ -13,7 +14,7 @@ import WalletDrawer from './WalletDrawer'
 import { getAddressShort, } from '../../common/utils'
 import {
     getAssets, getTokenDetails, getListedTokens,
-    getWalletData, getStakesData, getListedPools
+    getWalletData, getStakesData, getListedPools, WBNB_ADDR, getTokenContract, BGRSWAP_ADDR, SPARTA_ADDR
 } from '../../client/web3'
 
 const { Header } = Layout;
@@ -86,11 +87,17 @@ const Headbar = (props) => {
     }
 
     const getSpartaPrice = async () => {
-        // let resp = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=spartan&vs_currencies=usd')
-        // console.log(resp.data.spartan.usd)
-        // context.setContext({ 'spartanPrice': resp.data.spartan.usd })
-        context.setContext({ 'spartanPrice': 0.3 })
-        return
+        let balWBNB = await getTokenContract(WBNB_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
+        let balSPTA = await getTokenContract(SPARTA_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
+        let priceBNB = +balWBNB / +balSPTA
+        let resp = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd')
+        console.log(resp.data.binancecoin.usd * priceBNB )
+        let marketData = {
+            priceUSD: resp.data.binancecoin.usd * priceBNB, 
+            priceBNB: priceBNB, 
+            bnbPrice: resp.data.binancecoin.usd
+        }
+        context.setContext({ 'marketData': marketData })
     }
 
     const addr = () => {
