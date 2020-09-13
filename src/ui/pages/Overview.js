@@ -70,7 +70,6 @@ const Overview = (props) => {
 			</Row>
 
 			<SpartanPane/>
-			<hr />
 			<Row style={{textAlign:"center"}}>
 				<Col sm={24}>
 					<h1>LEARN MORE</h1>
