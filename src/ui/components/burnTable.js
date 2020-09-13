@@ -157,7 +157,7 @@ export const BurnTable = () => {
     const setMax = async (address) => {
         const tokenData = await getTokenData(address, context.walletData)
         const amount = getBig(tokenData.balance)
-        let actual = getMaxAmount(amount, modalToken)
+        let actual = getMaxAmount(amount.toFixed(0), modalToken)
         console.log(actual, actual * modalToken.claimRate, modalToken)
         setClaimAmount(actual)
         setSpartaValue(actual * modalToken.claimRate / (10 ** 18))
