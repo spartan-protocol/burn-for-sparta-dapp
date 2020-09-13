@@ -7,7 +7,7 @@ import { Text, Colour, } from '../components'
 import { formatWei } from '../../common/utils'
 
 import tokenArray from '../../data/tokenArray.json'
-import { getSpartaContract } from '../../client/web3'
+import { getSpartaContract, getExplorerURL } from '../../client/web3'
 
 export const AllocationTable = () => {
 
@@ -16,7 +16,8 @@ export const AllocationTable = () => {
     const [tokenTable, setTokenTable] = useState([])
 
     useEffect(() => {
-        context.tokenArray ? loadTokenData() : setTokenTable(tokenArray)
+        // context.tokenArray ? loadTokenData() : setTokenTable(tokenTable)
+        loadTokenData()
         // eslint-disable-next-line
     }, [])
 
@@ -24,15 +25,15 @@ export const AllocationTable = () => {
 
         let contract = getSpartaContract()
 
-        for(let i = 0; i<tokenArray.length; i++){
+        for (let i = 0; i < tokenArray.length; i++) {
             let data = await contract.methods.getAssetDetails(tokenArray[i].address).call()
             // console.log(data.claimed)
             tokenArray[i].claimed = data.claimed
         }
-        console.log({tokenArray})
+        console.log({ tokenArray })
         setTokenTable(tokenArray)
 
-        
+
 
         context.setContext({
             'tokenArray': tokenArray
@@ -54,7 +55,9 @@ export const AllocationTable = () => {
             render: (record) => {
                 return (
                     <div>
-                        <Text size={14} bold={true}>{record.name}</Text>
+                        <a href={`${getExplorerURL()}token/${record.address}`} target="blank">
+                <Text size={14} bold={true} color={Colour().gold}>{record.name}</Text>
+                        </a>
                     </div>
                 )
             }
@@ -76,8 +79,8 @@ export const AllocationTable = () => {
             render: (record) => {
                 return (
                     <div>
-                        <Progress percent={(+record.claimed / +record.allocation)*100} 
-                        status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
+                        <Progress percent={(+record.claimed / +record.allocation) * 100}
+                            status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
                     </div>
                 )
             }
@@ -128,7 +131,7 @@ export const AllocationTable = () => {
         }
     ];
 
-    return(
+    return (
         <div>
             <Row>
                 <Col xs={24} style={{ paddingRight: 50 }}>
