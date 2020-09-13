@@ -38,7 +38,7 @@ const Footer = (props) => {
                   </ul>
               </Col>
           </Row>
-      </footer>
+      </footer>      
   )
 }
 
