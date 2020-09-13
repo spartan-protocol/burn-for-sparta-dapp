@@ -4,7 +4,7 @@ import { Context } from '../../context'
 import { Row, Col, Table, Progress } from 'antd'
 // import { LoadingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Text, Colour, } from '../components'
-import { formatWei } from '../../common/utils'
+import { formatWei, convertFromWeiDigits } from '../../common/utils'
 
 import tokenArray from '../../data/tokenArray.json'
 import { getSpartaContract, getExplorerURL } from '../../client/web3'
@@ -14,12 +14,17 @@ export const AllocationTable = () => {
     const context = useContext(Context)
 
     const [tokenTable, setTokenTable] = useState([])
+    const [marketData, setMarketData] = useState(
+        { priceUSD: 0.3, priceBNB: 0.01, bnbPrice: 30 })
 
     useEffect(() => {
         // context.tokenArray ? loadTokenData() : setTokenTable(tokenTable)
         loadTokenData()
+        if (context.marketData) {
+            setMarketData(context.marketData)
+        }
         // eslint-disable-next-line
-    }, [])
+    }, [context.marketData])
 
     const loadTokenData = async () => {
 
@@ -32,8 +37,6 @@ export const AllocationTable = () => {
         }
         console.log({ tokenArray })
         setTokenTable(tokenArray)
-
-
 
         context.setContext({
             'tokenArray': tokenArray
@@ -86,27 +89,27 @@ export const AllocationTable = () => {
             }
         },
         {
-            title: 'Snapshot Price',
-            key: 'snapshotPrice',
+            title: 'Claim Rate (SPARTA)',
+            key: 'claimRate',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{record.snapshotPrice}</Text>
+                        <Text>{convertFromWeiDigits(record.claimRate, 4)}</Text>
                     </div>
                 )
             }
         },
-        // {
-        //     title: 'Claim Rate',
-        //     key: 'claimRate',
-        //     render: (record) => {
-        //         return (
-        //             <div>
-        //                 <Text>{formatWei(record.claimRate, 2, 2)}</Text>
-        //             </div>
-        //         )
-        //     }
-        // },
+        {
+            title: 'Claim Price',
+            key: 'price',
+            render: (record) => {
+                return (
+                    <div>
+                        <Text>${convertFromWeiDigits(record.claimRate * marketData.priceUSD, 4)}</Text>
+                    </div>
+                )
+            }
+        },
         {
             title: 'Sparta Allocation',
             key: 'spartaAllocation',
@@ -118,17 +121,17 @@ export const AllocationTable = () => {
                 )
             }
         },
-        {
-            title: 'Total Value',
-            key: 'totalValue',
-            render: (record) => {
-                return (
-                    <div>
-                        <Text>{record.totalValue}</Text>
-                    </div>
-                )
-            }
-        }
+        // {
+        //     title: 'Total Value',
+        //     key: 'totalValue',
+        //     render: (record) => {
+        //         return (
+        //             <div>
+        //                 <Text>{currency((record.spartaAllocation * marketData.priceUSD), 0, 0)}</Text>
+        //             </div>
+        //         )
+        //     }
+        // }
     ];
 
     return (

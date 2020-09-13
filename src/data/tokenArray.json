@@ -7,7 +7,7 @@
       "claimRate": 76666666666666700000,
       "snapshotPrice": "$23",
       "totalValue": "$3,000,000.00",
-      "spartaAllocation": "10,000,000"
+      "spartaAllocation": 10000000
     },
     {
       "name": "CanYaCoin",
@@ -17,7 +17,7 @@
       "claimRate": 133333333333333000,
       "snapshotPrice": "$0.0400",
       "totalValue": "$3,000,000.00",
-      "spartaAllocation": "10,000,000"
+      "spartaAllocation": 10000000
     },
     {
       "name": "RAVEN PROTOCOL",
@@ -27,7 +27,7 @@
       "claimRate": 3333333333333330,
       "snapshotPrice": "$0.001",
       "totalValue": "$1,500,000.00",
-      "spartaAllocation": "5,000,000"
+      "spartaAllocation": 5000000
     },
     {
       "name": "Cubiex",
@@ -37,6 +37,6 @@
       "claimRate": 15333333333333300,
       "snapshotPrice": "$0.0046",
       "totalValue": "$375,000.00",
-      "spartaAllocation": "1,250,000"
+      "spartaAllocation": 1250000
     }
   ]

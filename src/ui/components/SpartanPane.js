@@ -4,7 +4,7 @@ import { Context } from '../../context'
 import Web3 from 'web3'
 
 import {
-    SPARTA_ADDR, getSpartanPrice, getExplorerURL, ERC20_ABI,
+    SPARTA_ADDR, ERC20_ABI,
     // getTokenContract, nodeAPI, UTILS_ADDR, UTILS_ABI,
     // getNewTokenData, getAccount,
 } from '../../client/web3.js'
@@ -23,14 +23,16 @@ export const SpartanPane = () => {
     const [emissionData, setEmissionData] = useState(
         { balance: '', totalBurnt: '', totalEmitted: 0, totalFees: '' })
     const [marketData, setMarketData] = useState(
-        { priceUSD: '', priceETH: '', ethPrice: '' })
+        { priceUSD: 0.3, priceBNB: 0.01, bnbPrice: 30 })
 
     useEffect(() => {
         context.spartanData ? getspartanData() : loadspartanData()
         loadEmissionData()
-        loadMarketData()
+        if (context.marketData) {
+            setMarketData(context.marketData)
+        }
         // eslint-disable-next-line
-    }, [])
+    }, [context.marketData])
 
     const getspartanData = () => {
         setSpartanData(context.spartanData)
@@ -41,7 +43,7 @@ export const SpartanPane = () => {
         // let contract = new web3.eth.Contract(UTILS_ABI, UTILS_ADDR)
         // console.log(contract)
         // var spartanData = await contract.methods.getTokenDetails(SPARTA_ADDR).call()
-        
+
         // let account = await getAccount()
         // let spartanData = await getNewTokenData(SPARTA_ADDR, account)
         let spartanData = {
@@ -76,18 +78,18 @@ export const SpartanPane = () => {
         context.setContext({ "emissionData": emissionData })
     }
 
-    const loadMarketData = async () => {
-        let spartaPrice = await getSpartanPrice()
+    // const loadMarketData = async () => {
+    //     let spartaPrice = await getSpartanPrice()
 
-        const marketData = {
-            priceUSD: spartaPrice,
-        }
+    //     const marketData = {
+    //         priceUSD: spartaPrice,
+    //     }
 
-        setMarketData(marketData)
-        context.setContext({
-            "marketData": marketData
-        })
-    }
+    //     setMarketData(marketData)
+    //     context.setContext({
+    //         "marketData": marketData
+    //     })
+    // }
 
     const SpartanStatsStyles = {
         padding: '49px 21px',
@@ -134,7 +136,7 @@ export const SpartanPane = () => {
                     </Col>
                 </Row>
                 <br />
-                <a id="SpartanStatsTableContractAddress" href={`${getExplorerURL()}address/${SPARTA_ADDR}`} target="blank" style={{ fontSize: 16, color: Colour().gold }}>{SPARTA_ADDR}</a>
+
             </Col>
             <Col id="SpartanStatsTableCurrentPrice" xs={24} sm={6} style={{ paddingRight: 20 }}>
                 <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
@@ -143,7 +145,14 @@ export const SpartanPane = () => {
                 <div style={{ textAlign: 'center' }}>
                     <Text size={32}>{currency(marketData.priceUSD, 2, 2)}</Text>
                 </div>
+                <br />
+
             </Col>
+            <br />
+            <div>
+                <a href="https://burgerswap.org/" target="blank" style={{ fontSize: 20, color: Colour().gold }}>TRADE ON BURGERSWAP</a>
+            </div>
         </Row>
+
     )
 }

@@ -39,6 +39,12 @@ export function convertFromWei(number) {
     return final.toFixed(2)
 }
 
+export function convertFromWeiDigits(number, digit=2) {
+    var num = new BigNumber(number)
+    var final = num.div(10**18)
+    return final.toFixed(digit)
+}
+
 export function convertToWei(number) {
     var num = new BigNumber(number)
     var final = num.multipliedBy(10**18)
