@@ -14,9 +14,10 @@ const Sidebar = (props) => {
   const menu_items = [
     "overview",
     "burn",
+    "allocations",
     // "stake",
     // "trade",
-    // "stats",
+    "help",
     "about"
   ]
 
@@ -42,7 +43,7 @@ const Sidebar = (props) => {
 
   return (
 
-    <Layout.Sider width={"133"} trigger={null} collapsible breakpoint="md"
+    <Layout.Sider width={"155"} trigger={null} collapsible breakpoint="md"
     collapsedWidth="0">
 
       <Breakpoint small down>

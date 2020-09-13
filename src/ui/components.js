@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button as AntButton } from "antd"
 import { HomeOutlined, FileTextOutlined, FireOutlined, UpCircleOutlined,
-  LoginOutlined, LineChartOutlined, PieChartOutlined, CheckSquareOutlined } from '@ant-design/icons'
+  LoginOutlined, LineChartOutlined, PieChartOutlined, CheckSquareOutlined,
+  QuestionOutlined, DollarCircleOutlined } from '@ant-design/icons'
 
 export const Font = () => {
   return "Courier"
@@ -325,6 +326,22 @@ export const Icon = (props) => {
       <PieChartOutlined>
         {props.children}
       </PieChartOutlined >
+    )
+  }
+
+  if(props.icon === "help"){
+    return (
+      <QuestionOutlined>
+        {props.children}
+      </QuestionOutlined>
+    )
+  }
+
+  if(props.icon === "allocations"){
+    return (
+      <DollarCircleOutlined>
+        {props.children}
+      </DollarCircleOutlined>
     )
   }
 
