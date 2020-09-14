@@ -30,6 +30,16 @@
       "spartaAllocation": 5000000
     },
     {
+      "name": "Cubiex",
+      "symbol": "CBIX",
+      "address": "0x34681c1035f97e1edcccec5f142e02ff81a3a230",
+      "allocation": 81521739130434800000000000,
+      "claimRate": 15333333333333300,
+      "snapshotPrice": "$0.0046",
+      "totalValue": "$375,000.00",
+      "spartaAllocation": 1250000
+    },
+    {
       "name": "DOS Network",
       "symbol": "DOS",
       "address": "0xDc0f0a5719c39764b011eDd02811BD228296887C",
@@ -40,13 +50,13 @@
       "spartaAllocation": 5000000
     },
     {
-      "name": "Cubiex",
-      "symbol": "CBIX",
-      "address": "0x34681c1035f97e1edcccec5f142e02ff81a3a230",
-      "allocation": 81521739130434800000000000,
-      "claimRate": 15333333333333300,
-      "snapshotPrice": "$0.0046",
-      "totalValue": "$375,000.00",
-      "spartaAllocation": 1250000
+      "name": "Prometeus",
+      "symbol": "PROM",
+      "address": "0xaf53d56ff99f1322515e54fdde93ff8b3b7dafd5",
+      "allocation": 750000000000000000000000,
+      "claimRate": 6666666666666670000,
+      "snapshotPrice": "$2.00",
+      "totalValue": "$1,500,000.00",
+      "spartaAllocation": 5000000
     }
   ]
