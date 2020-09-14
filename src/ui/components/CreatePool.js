@@ -7,19 +7,21 @@ import { UnlockOutlined } from '@ant-design/icons';
 
 import { InputPane, CoinRow } from '../components/common'
 import { Center, Sublabel, Button} from '../components/elements'
-import { paneStyles, rowStyles, colStyles } from '../components/styles'
+import { rowStyles } from '../components/styles'
 
 import { Context } from '../../context'
 
-import { BNB_ADDR, SPARTA_ADDR, ROUTER_ADDR, getTokenContract, getRouterContract, getTokenData, getNewTokenData, getAssets, getListedTokens, getListedPools, getPoolsData, getTokenDetails, getWalletData, getStakesData } from '../../client/web3'
+import { BNB_ADDR, SPARTA_ADDR, ROUTER_ADDR, getTokenContract, getRouterContract, getTokenData, getNewTokenData, getAssets, getListedTokens, getListedPools, getPoolsData, getTokenDetails, getWalletData, getStakesData} from '../../client/web3'
 import { convertToWei, getBN } from '../../common/utils'
+
+
 
 const CreatePool = (props) => {
 
     const context = useContext(Context)
     const [addressSelected, setAddressSelected] = useState(SPARTA_ADDR)
 
-    // const [tokenList, setTokenList] = useState([SPARTA_ADDR])
+    //const [tokenList, setTokenList] = useState([SPARTA_ADDR])
     // const [tokenShortList, setTokenShortList] = useState([SPARTA_ADDR])
     const [checkFlag, setCheckFlag] = useState(false)
     const [tokenData, setTokenData] = useState(null)
@@ -69,11 +71,11 @@ const CreatePool = (props) => {
         setStake1Data(await getStakeInputData(inputTokenData.balance, inputTokenData))
         const outputTokenData = await getTokenData(BNB_ADDR, context.walletData)       
         setStake2Data(await getStakeInputData(outputTokenData.balance, outputTokenData))
-             
+        console.log(outputTokenData)
 
         // const tokenList = await filterWalletNotPools(context.poolsData, context.walletData)       
         // setTokenList(tokenList)
-        // console.log(tokenList)
+        
         // setTokenShortList(await filterTokensNotPoolSelection())
         // setTokenData(await getTokenData(tokenList[0], context.walletData))
         // setMainPool(await getTokenData(tokenList[0], context.walletData))
@@ -89,6 +91,7 @@ const CreatePool = (props) => {
             setApproval2(false)
 
             var tokenData = await getNewTokenData(addressSelected, context.walletData.address)
+            
             setTokenData(tokenData)
             console.log(tokenData)
 
@@ -270,7 +273,7 @@ const CreatePool = (props) => {
                     <br />
                     {!context.connected && <Center><Button type='secondary'> Your Metamask is not connected</Button></Center>}
                     {context.connected &&
-                        <Input placeholder={'enter token address'} onChange={onInputChange}></Input>}
+                        <Input placeholder={'enter token address'} onChange={onInputChange}></Input>} <br /><br />
                     {/* <Input onChange={props.onInputChange}
                         value={tokenList[0]}
                         allowClear={true}
@@ -296,8 +299,8 @@ const CreatePool = (props) => {
           
             {checkFlag &&
                 <div>
-                    <Row style={paneStyles}>
-                        <Col xs={24} style={colStyles}>
+                    <Row>
+                        <Col>
                         <Row >                            
                                 <Col xs={12}>
                                     <Sublabel size={20}>{'INPUT SPARTA'}</Sublabel><br />

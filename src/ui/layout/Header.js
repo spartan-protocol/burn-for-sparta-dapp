@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../../context'
-import { Row, Col, Layout, Drawer, Button } from 'antd';
-//import { UserOutlined, LoadingOutlined } from '@ant-design/icons';
+import { Row, Col, Layout, Drawer, Button, Spin } from 'antd';
+import { SyncOutlined  } from '@ant-design/icons';
 //import {  } from '../components/elements'
 
 import Web3 from 'web3'
@@ -12,6 +12,9 @@ import logo from '../../assets/spartan-logo-white.png';
 import WalletDrawer from './WalletDrawer'
 import { getAddressShort, } from '../../common/utils'
 import {getAssets, getTokenDetails, getListedTokens, getWalletData, getStakesData, getListedPools} from '../../client/web3'
+
+//import { PoolData, tokenArray2, NetworkData, WalletData, StakeData } from '../../client/mockData'
+
 
 const { Header } = Layout;
 
@@ -25,6 +28,7 @@ const Headbar = (props) => {
     useEffect(() => {
         if(context.connectedBSC){
             connectWallet()
+            
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [context.connectedBSC])
@@ -77,6 +81,8 @@ const Headbar = (props) => {
         }
     }
 
+    
+
     const ethEnabled = () => {
         console.log('connecting')
         if (window.ethereum) {
@@ -95,7 +101,7 @@ const Headbar = (props) => {
         context.setContext({ 'spartanPrice': 0.3 })
         return
     }
-
+    
     const addr = () => {
         return getAddressShort(context.walletData?.address)
     }
@@ -117,6 +123,8 @@ const Headbar = (props) => {
                     
                 </Col>
                 <Col xs={4} style={{ textAlign: 'right' }}>
+                    <SyncOutlined onClick={connectWallet}  />
+                    &nbsp;
                     {!connected && !connecting &&
                         <Button type="primary" onClick={connectWallet}>CONNECT</Button>
                     }
@@ -124,8 +132,9 @@ const Headbar = (props) => {
                         <Button type="primary" >CONNECTING</Button>
                     }
                     {connected &&
-                        <Button type="primary" onClick={showDrawer}>{addr()}</Button>
+                        <Button type="primary" onClick={showDrawer}>{addr()}</Button>                        
                     }
+                    
                 </Col>
             </Row>
             <Drawer

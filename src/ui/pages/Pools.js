@@ -4,6 +4,7 @@ import { Link} from 'react-router-dom'
 import { Table, Row, Col, Tabs, Button } from 'antd'
 
 import { getListedTokens, getListedPools, getPoolsData, getGlobalData } from '../../client/web3'
+
 import { formatUSD, formatAPY, convertFromWei } from '../../common/utils'
 import '../../common/styles.css'
 import { paneStyles, colStyles } from '../components/styles'
@@ -13,6 +14,8 @@ import { LabelGroup } from '../components/elements'
 import { ColourCoin } from '../components/common'
 import CreatePool from '../components/CreatePool'
 
+//Mock data (Remove and s)
+//import { PoolData, tokenArray2, NetworkData, WalletData, StakeData } from '../../client/mockData'
 
 const { TabPane } = Tabs
 
@@ -90,13 +93,13 @@ const PoolTable = (props) => {
 
     useEffect(() => {
         getData()
+        //getMockData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const getData = async () => {
         let tokenArray = await getListedTokens()
-        context.setContext({ 'tokenArray': tokenArray })
-        
+        context.setContext({ 'tokenArray': tokenArray })        
         let poolArray = await getListedPools()
         context.setContext({ 'poolArray': poolArray })
         context.setContext({ 'poolsData': await getPoolsData(tokenArray) })
