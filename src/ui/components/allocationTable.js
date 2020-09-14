@@ -66,12 +66,12 @@ export const AllocationTable = () => {
             }
         },
         {
-            title: 'Allocation',
+            title: 'Token Allocation',
             key: 'allocation',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{formatWei(record.allocation, 2, 2)}</Text>
+                        <Text>{formatWei(record.allocation, 0, 0)}</Text>
                     </div>
                 )
             }
@@ -89,7 +89,7 @@ export const AllocationTable = () => {
             }
         },
         {
-            title: 'Claim Rate (SPARTA)',
+            title: 'SPARTA per Token',
             key: 'claimRate',
             render: (record) => {
                 return (
@@ -99,24 +99,24 @@ export const AllocationTable = () => {
                 )
             }
         },
-        {
-            title: 'Claim Price',
-            key: 'price',
+                {
+            title: 'SPARTA Allocation',
+            key: 'spartaAllocation',
             render: (record) => {
                 return (
                     <div>
-                        <Text>${convertFromWeiDigits(record.claimRate * marketData.priceUSD, 4)}</Text>
+                        <Text>{record.spartaAllocation.toLocaleString()}</Text>
                     </div>
                 )
             }
         },
         {
-            title: 'Sparta Allocation',
-            key: 'spartaAllocation',
+            title: 'Market Value',
+            key: 'price',
             render: (record) => {
                 return (
                     <div>
-                        <Text>{record.spartaAllocation}</Text>
+                        <Text>${convertFromWeiDigits(record.claimRate * marketData.priceUSD, 4)}</Text>
                     </div>
                 )
             }
