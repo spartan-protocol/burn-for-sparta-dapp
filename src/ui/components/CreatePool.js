@@ -2,15 +2,16 @@ import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { Row, Col, Input } from 'antd'
-import { QuestionCircleOutlined, UnlockOutlined } from '@ant-design/icons';
+import { UnlockOutlined } from '@ant-design/icons';
+
 
 import { InputPane, CoinRow } from '../components/common'
 import { Center, Sublabel, Button} from '../components/elements'
 import { paneStyles, rowStyles, colStyles } from '../components/styles'
 
 import { Context } from '../../context'
-// import { getStakeUnits } from '../../math'
-import { BNB_ADDR, SPARTA_ADDR, ROUTER_ADDR, getTokenContract, getRouterContract, getTokenData, getNewTokenData, getAssets, getListedTokens, getListedPools, getPoolsData, getTokenDetails, getWalletData } from '../../client/web3'
+
+import { BNB_ADDR, SPARTA_ADDR, ROUTER_ADDR, getTokenContract, getRouterContract, getTokenData, getNewTokenData, getAssets, getListedTokens, getListedPools, getPoolsData, getTokenDetails, getWalletData, getStakesData } from '../../client/web3'
 import { convertToWei, getBN } from '../../common/utils'
 
 const CreatePool = (props) => {
@@ -63,17 +64,19 @@ const CreatePool = (props) => {
     }, [context.connected])
 
     const getData = async () => {
-        // const tokenList = await filterWalletNotPools(context.poolsData, context.walletData)
+
+        const inputTokenData = await getTokenData(SPARTA_ADDR, context.walletData)
+        setStake1Data(await getStakeInputData(inputTokenData.balance, inputTokenData))
+        const outputTokenData = await getTokenData(BNB_ADDR, context.walletData)       
+        setStake2Data(await getStakeInputData(outputTokenData.balance, outputTokenData))
+             
+
+        // const tokenList = await filterWalletNotPools(context.poolsData, context.walletData)       
         // setTokenList(tokenList)
         // console.log(tokenList)
         // setTokenShortList(await filterTokensNotPoolSelection())
         // setTokenData(await getTokenData(tokenList[0], context.walletData))
         // setMainPool(await getTokenData(tokenList[0], context.walletData))
-        const inputTokenData = await getTokenData(SPARTA_ADDR, context.walletData)
-        setStake1Data(await getStakeInputData(inputTokenData.balance, inputTokenData))
-        // const outputTokenData = await getTokenData(BNB_ADDR, context.walletData)
-        // setStake2Data(await getStakeInputData(outputTokenData.balance, outputTokenData))
-
     }
 
     const onInputChange = async (e) => {
@@ -89,7 +92,7 @@ const CreatePool = (props) => {
             setTokenData(tokenData)
             console.log(tokenData)
 
-            if (+tokenData.balance > 0) {
+            if (tokenData.balance > 0) {
                 setCheckFlag(true)
                 setStake2Data(await getStakeInputData(tokenData.balance, tokenData))
             }
@@ -97,13 +100,8 @@ const CreatePool = (props) => {
             await checkApproval1(SPARTA_ADDR)
             await checkApproval2(addressSelected)
         }
-
-
     }
-
-    // const changeToken = () => {
-
-    // }
+      
 
     const onStake1Change = async (e) => {
         const input = e.target.value
@@ -128,7 +126,7 @@ const CreatePool = (props) => {
     const changeStake1Amount = async (amount) => {
         const finalAmt = (amount * stake1Data?.balance) / 100
         setStake1Data(await getStakeInputData(finalAmt, stake1Data))
-        // const stake = {
+        // const stake = { 
         //     baseAmt: finalAmt,
         //     tokenAmt: stake2Data.input
         // }
@@ -203,7 +201,6 @@ const CreatePool = (props) => {
             }
             console.log(address, +approval, +tokenData.balance)
         }
-
     }
 
     const unlockSparta = async () => {
@@ -246,7 +243,7 @@ const CreatePool = (props) => {
         })
         // setStakeTx(tx.transactionHash)
         await reloadData()
-        props.history.push('/pools')
+        props.history.push('/stake')
     }
 
     const reloadData = async () => {
@@ -255,27 +252,25 @@ const CreatePool = (props) => {
         var sortedTokens = [...new Set(assetArray.concat(tokenArray))].sort()
         let poolArray = await getListedPools()
         let poolsData = await getPoolsData(tokenArray)
-        // let stakesData = await getStakesData(context.walletData.address, poolArray)
+        let stakesData = await getStakesData(context.walletData.address, poolArray)
         let tokenDetailsArray = await getTokenDetails(context.walletData.address, sortedTokens)
         let walletData = await getWalletData(context.walletData.address, tokenDetailsArray)
         context.setContext({ 'tokenArray': tokenArray })
         context.setContext({ 'poolArray': poolArray })
         context.setContext({ 'poolsData': poolsData })
-        // context.setContext({ 'stakesData': stakesData })
+        context.setContext({ 'stakesData': stakesData })
         context.setContext({ 'tokenDetailsArray': tokenDetailsArray })
         context.setContext({ 'walletData': walletData })
     }
 
     return (
         <div>            
-            <h1>CREATE POOL</h1>            
-            <h2>Create a pool and provide staking services to others</h2>
-            <br />  
-       
-            <Row style={rowStyles}>                
-                <Col xs={12}>
-                    <Input placeholder={'enter token address'} onChange={onInputChange}></Input>
-
+            <Row >
+                <Col>           
+                    <br />
+                    {!context.connected && <Center><Button type='secondary'> Your Metamask is not connected</Button></Center>}
+                    {context.connected &&
+                        <Input placeholder={'enter token address'} onChange={onInputChange}></Input>}
                     {/* <Input onChange={props.onInputChange}
                         value={tokenList[0]}
                         allowClear={true}
@@ -283,10 +278,13 @@ const CreatePool = (props) => {
                         //     changeToken={changeToken}
                         //     tokenList={tokenList} />}
                     ></Input> */}
-                    </Col>
-               
-                    <Col xs={4}>
-                    <Button icon={<QuestionCircleOutlined />} onClick={checkToken} type="outline">CHECK</Button>
+                    </Col>               
+                <Col xs={4}>
+                    <br />
+                    {context.connected &&
+                        <Button onClick={checkToken} type="primary">CHECK</Button>
+                    }
+                    <br />
                 </Col>
                 {checkFlag &&
                     <Col xs={8}>
@@ -300,8 +298,7 @@ const CreatePool = (props) => {
                 <div>
                     <Row style={paneStyles}>
                         <Col xs={24} style={colStyles}>
-                        <Row >
-                            
+                        <Row >                            
                                 <Col xs={12}>
                                     <Sublabel size={20}>{'INPUT SPARTA'}</Sublabel><br />
                                     <InputPane
@@ -312,18 +309,16 @@ const CreatePool = (props) => {
                                         // changeToken={changeStake1Token}
                                         changeAmount={changeStake1Amount}
                                     />
-                                </Col>
-                               
+                                </Col>                               
                                 <Col xs={12}>
                                     <Sublabel size={20}>{'INPUT TOKEN'}</Sublabel><br />
                                     <InputPane
-                                        // tokenList={[tokenData.address]}
+                                        //tokenList={[tokenData.address]}
                                         paneData={stake2Data}
                                         onInputChange={onStake2Change}
                                         // changeToken={changeStake2Token}
                                         changeAmount={changeStake2Amount} />
                                 </Col>
-
                             </Row>
                             <Row style={rowStyles}>
                                 {/* <Col xs={12}>
@@ -344,7 +339,7 @@ const CreatePool = (props) => {
                             </Col>
                             <Col xs={8}>
                                 {(approval1 && approval2) &&
-                                    <Center><Button type={'primary'} onClick={createPool}> CREATE POOL</Button></Center>
+                                    <Center><Button type={'primary'} onClick={createPool}>CREATE POOL</Button></Center>
                                 }
                             </Col>
                             <Col xs={8}>

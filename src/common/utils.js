@@ -11,6 +11,10 @@ export function getBN(BN){
     return (new BigNumber(BN)).toFixed()
 }
 
+export function formatBN(BN, n = 2) {
+    return BN.toFixed(n)
+}
+
 export function getBig(BN){
     return new BigNumber(BN)
 }
@@ -151,3 +155,4 @@ export const rainbowStop = (h) => {
     const secondInt = inputStr.length > 1 ? (inputStr.charCodeAt(1) - 'A'.charCodeAt(0)) / div : 0
     return [Number(firstInt.toFixed(2)), Number(secondInt.toFixed(2))]
   }
+

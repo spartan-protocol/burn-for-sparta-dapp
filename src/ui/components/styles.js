@@ -19,3 +19,4 @@ export const rowStyles = {
     alignItems: 'center',
     textAlign: 'center'
 }
+

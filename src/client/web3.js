@@ -8,7 +8,7 @@ import DAO from '../artifacts/Dao.json'
 
 // import { BN2Str, oneBN } from '../common/utils'
 
-const TESTNET = (process.env.REACT_APP_TESTNET === 'TRUE')
+const TESTNET =  'TRUE'
 
 export const BNB = '0x0000000000000000000000000000000000000000'
 
@@ -26,7 +26,7 @@ export const UTILS_ABI = UTILS.abi
 export const DAO_ABI = DAO.abi
 
 export const getExplorerURL = () => {
-    return TESTNET ? 'https://testnet.bscscan.com/' : 'https://bscscan.com/'
+    return TESTNET ? "https://explorer.binance.org/smart-testnet/" : 'https://bscscan.com/'
 }
 
 export const nodeAPI = () => {
@@ -40,7 +40,7 @@ export const nodeAPI = () => {
 }
 
 export const getWeb3 = () => {
-    return new Web3(Web3.givenProvider || nodeAPI())
+    return new Web3(Web3.givenProvider || "http://localhost:7545")
 }
 
 export const getSpartanPrice = async () => {
@@ -301,7 +301,7 @@ export const getWalletData = async (address, tokenDetailsArray) => {
 
 export const getNewTokenData = async (token, member) => {
     var obj = await getUtilsContract().methods.getTokenDetailsWithMember(token, member).call()
-    // var tokenBalance = await getTokenContract(token).methods.balanceOf(address).call()
+    //var tokenBalance = await getTokenContract(token).methods.balanceOf(address).call()
 
     var tokenData = {
         'symbol': obj.symbol,
@@ -309,7 +309,6 @@ export const getNewTokenData = async (token, member) => {
         'balance': obj.balance,
         'address': token
     }
-
     console.log(tokenData)
     return tokenData
 }
@@ -422,3 +421,5 @@ export const getRewards = async (member) => {
     let locked = await getDaoContract().methods.calcCurrentReward(member).call()
     return locked;
 }
+
+

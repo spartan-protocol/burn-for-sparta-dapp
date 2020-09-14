@@ -3,11 +3,13 @@
     "",
     "\\src",
     "\\src\\client",
+    "\\src\\common",
     "\\src\\data",
     "\\src\\ui",
     "\\src\\ui\\components",
-    "\\src\\ui\\layout"
+    "\\src\\ui\\layout",
+    "\\src\\ui\\pages"
   ],
-  "SelectedNode": "\\src\\ui\\layout\\Footer.js",
+  "SelectedNode": "\\src\\ui\\layout\\Sidebar.js",
   "PreviewInSolutionExplorer": false
 }

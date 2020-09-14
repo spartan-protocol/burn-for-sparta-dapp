@@ -5,7 +5,7 @@ import { Table, Row, Col, Tabs, Button } from 'antd'
 
 import { getListedTokens, getListedPools, getPoolsData, getGlobalData } from '../../client/web3'
 import { formatUSD, formatAPY, convertFromWei } from '../../common/utils'
-
+import '../../common/styles.css'
 import { paneStyles, colStyles } from '../components/styles'
 import { SwapOutlined, LoginOutlined, LoadingOutlined } from '@ant-design/icons';
 
@@ -44,29 +44,40 @@ const Pools = (props) => {
     const onChange = key => {
         setTab(key)
     }
-    
+    //Pools STAKING and CREATE POOL TAB
     return (
         <>          
             <Tabs defaultActiveKey='1' activeKey={tab} onChange={onChange} size={'large'} style={{ marginTop: 0, textAlign: "center" }}>
                 <TabPane tab="STAKING" key="1" style={{ textAlign: "left" }}>
-                    <h1>POOLS</h1>
-                    <h2>Delegate to pools here</h2>                    
+                    <h1>POOLS</h1>                   
                     <br />
                         <Row>
-                            <Col xs={24} xl={5}>
+                        <Col xs={24} xl={5}>
                                 <PoolsPaneSide globalData={globalData}/>
                             </Col>
                             <Col xs={24} xl={19}>
                                 <PoolTable />
                             </Col>
-                        </Row>                                        
+                        </Row>                      
                 </TabPane>
-                <TabPane tab="CREATE POOL" key="2" style={{ textAlign: "left" }}>                    
-                    <CreatePool />                      
+                <TabPane tab="CREATE A POOL" key="2" style={{ textAlign: "left" }}>      
+                    <Row style={paneStyles}>
+                        <Col style={{ padding: 20 }}> 
+                    <h1>CREATE A POOL</h1>
+                    <h2>Instructions</h2>
+                    <p>1. Ensure your Metamask is connected to the Binance Smart Chain (BSC) 
+                        <br />
+                        2. Enter the token address you wish to open a pool for 
+                        <br />
+                    3. Choose the amount of the token you would like to pledge to the pool
+                        <br />
+                        4. Choose the amount of the SPARTA you would like to pledge to the pool</p>
+                        <br />
+                            <CreatePool />
+                        </Col>
+                    </Row>
                 </TabPane>                
-            </Tabs>
-              
-            
+            </Tabs>        
         </>
     )
 }
@@ -85,12 +96,12 @@ const PoolTable = (props) => {
     const getData = async () => {
         let tokenArray = await getListedTokens()
         context.setContext({ 'tokenArray': tokenArray })
-        console.log(tokenArray)
+        
         let poolArray = await getListedPools()
         context.setContext({ 'poolArray': poolArray })
-        console.log(poolArray)
         context.setContext({ 'poolsData': await getPoolsData(tokenArray) })
-        
+        console.log(tokenArray)
+        console.log(poolArray)
     }
 
     const columns = [
@@ -158,18 +169,11 @@ const PoolTable = (props) => {
         },
         {
             render: (record) => (
-                <div style={{ textAlign: 'right' }}>
-                    <Link to={`/pool/stake?pool=${record.address}`}>
-                        <Button type={'secondary'}
-                            icon={<LoginOutlined />}>JOIN</Button>
-                    </Link>
-                    <Link to={`/pool/swap?pool=${record.address}`}>
-                        <Button
-                            icon={<SwapOutlined />}
-                        >TRADE</Button>
-                    </Link>
+                <div>
+                    <Link to={`/stake/stake?pool=${record.address}`}><Button type={'primary'} size='small' icon={<LoginOutlined />}>STAKE >></Button></Link>
+                    <br /><br />
+                    <Link to={`/stake/swap?pool=${record.address}`}><Button type={'text'} size='small' icon={<SwapOutlined />}>TRADE >></Button></Link>                             
                 </div>
-
             )
         }
     ]

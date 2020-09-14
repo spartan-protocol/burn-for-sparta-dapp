@@ -14,9 +14,10 @@ const Sidebar = (props) => {
   const menu_items = [
     "overview",
     "burn",    
-    "stake",
-    // "trade",
-    // "stats",
+     "stake",
+    //"pools",
+    //"trade",
+    //"stats",
     "about"
   ]
 
@@ -67,8 +68,8 @@ const Sidebar = (props) => {
                     {item === 'stake' || item === 'trade' ?
                           <>
                             {isSelected(item) ?
-                                <Text bold={true} color="#fff" className="beta">{item}</Text> :
-                                <Text color="#97948E" className="beta">{item}</Text>
+                                <Text bold={true} color="#fff" >{item}</Text> :
+                                <Text color="#97948E" >{item}</Text>
                             }
                           </> :
                           <>

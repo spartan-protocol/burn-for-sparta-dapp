@@ -5,6 +5,7 @@ No state
 ################################################
 */
 
+
 const BigNumber = require('bignumber.js')
 
 function calcSwapOutput(x, X, Y) {
@@ -98,3 +99,4 @@ module.exports = {
       return calcShare(s, T, A, V)
     }
 }
+

@@ -10,7 +10,8 @@ import Burn from './ui/pages/Burn'
 import About from './ui/pages/About'
 import DAO from './ui/pages/DAO'
 import Pools from './ui/pages/Pools'
-//import test from './ui/pages/test'
+import Stake from './ui/pages/NewStake'
+import Swap from './ui/pages/NewSwap'
 import { Colour } from './ui/components'
 
 import { ContextProvider } from './context'
@@ -33,7 +34,9 @@ const App = () => {
 									<Route path="/overview" exact component={Overview} />
 									<Route path="/burn" exact component={Burn} />
 									<Route path="/dao" exact component={DAO} />
-									<Route path="/stake" exact component={Pools} />																
+									<Route path="/stake" exact component={Pools} />
+									<Route path="/stake/stake" exact component={Stake} />
+									<Route path="/stake/swap" exact component={Swap} />																
 									<Route path="/about" exact component={About} />
 								</Switch>
 							</div>
