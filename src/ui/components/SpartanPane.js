@@ -149,9 +149,7 @@ export const SpartanPane = () => {
 
             </Col>
             <br />
-            <div>
-                <a href="https://burgerswap.org/" target="blank" style={{ fontSize: 20, color: Colour().gold }}>TRADE ON BURGERSWAP</a>
-            </div>
+            
         </Row>
 
     )

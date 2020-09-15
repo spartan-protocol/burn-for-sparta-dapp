@@ -14,7 +14,7 @@ import WalletDrawer from './WalletDrawer'
 import { getAddressShort, } from '../../common/utils'
 import {
     getAssets, getTokenDetails, getListedTokens,
-    getWalletData, getStakesData, getListedPools, WBNB_ADDR, getTokenContract, BGRSWAP_ADDR, SPARTA_ADDR
+    getWalletData, getStakesData, getListedPools,
 } from '../../client/web3'
 
 const { Header } = Layout;
@@ -87,14 +87,14 @@ const Headbar = (props) => {
     }
 
     const getSpartaPrice = async () => {
-        let balWBNB = await getTokenContract(WBNB_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
-        let balSPTA = await getTokenContract(SPARTA_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
-        let priceBNB = +balWBNB / +balSPTA
+        // let balWBNB = await getTokenContract(WBNB_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
+        // let balSPTA = await getTokenContract(SPARTA_ADDR).methods.balanceOf(BGRSWAP_ADDR).call()
+        // let priceBNB = +balWBNB / +balSPTA
         let resp = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd')
-        console.log(resp.data.binancecoin.usd * priceBNB )
+        // console.log(resp.data.binancecoin.usd * priceBNB )
         let marketData = {
-            priceUSD: resp.data.binancecoin.usd * priceBNB, 
-            priceBNB: priceBNB, 
+            priceUSD: 0.30, 
+            priceBNB: 0.30 / resp.data.binancecoin.usd , 
             bnbPrice: resp.data.binancecoin.usd
         }
         context.setContext({ 'marketData': marketData })
