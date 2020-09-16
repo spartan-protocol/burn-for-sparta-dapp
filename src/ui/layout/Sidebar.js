@@ -43,7 +43,7 @@ const Sidebar = (props) => {
 
   return (
 
-    <Layout.Sider width={"155"} trigger={null} collapsible breakpoint="md"
+    <Layout.Sider width={"156"} trigger={"MENU"} collapsible breakpoint="md"
     collapsedWidth="0">
 
       <Breakpoint small down>

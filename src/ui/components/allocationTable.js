@@ -136,8 +136,8 @@ export const AllocationTable = () => {
 
     return (
         <div>
-            <Row>
-                <Col xs={24} style={{ paddingRight: 50 }}>
+        <Row gutter={[16, 16]} type="flex" justify="center">
+                <Col xs={24}>
                     <Table dataSource={tokenTable} columns={columns} pagination={false} rowKey="address" scroll={{ x: 1000 }}></Table>
                 </Col>
             </Row>
