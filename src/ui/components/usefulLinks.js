@@ -1,5 +1,4 @@
 import { Col, Row } from "antd"
-import { Click, Colour } from "../components"
 import React from "react"
 
 import { SPARTA_ADDR, getExplorerURL } from '../../client/web3'

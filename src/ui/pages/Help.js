@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 import '../../App.less'
 import { Card, Row, Col } from 'antd'
 
