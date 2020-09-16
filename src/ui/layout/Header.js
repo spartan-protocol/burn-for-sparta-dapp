@@ -8,7 +8,7 @@ import axios from 'axios'
 import Web3 from 'web3'
 import { message } from 'antd';
 
-import logo from '../../assets/spartan-logo-white.png';
+import logo from '../../assets/spartan-coin.png';
 
 import WalletDrawer from './WalletDrawer'
 import { getAddressShort, } from '../../common/utils'
@@ -93,8 +93,8 @@ const Headbar = (props) => {
         let resp = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd')
         // console.log(resp.data.binancecoin.usd * priceBNB )
         let marketData = {
-            priceUSD: 0.30, 
-            priceBNB: 0.30 / resp.data.binancecoin.usd , 
+            priceUSD: 0.30,
+            priceBNB: 0.30 / resp.data.binancecoin.usd ,
             bnbPrice: resp.data.binancecoin.usd
         }
         context.setContext({ 'marketData': marketData })
@@ -114,13 +114,10 @@ const Headbar = (props) => {
     return (
         <Header>
             <Row>
-                <Col xs={8}>
-                    <a href="/"><img src={logo} alt="SpartanLogo" style={{width:220, height:'auto'}}/></a>
+                <Col xs={11}>
+                  <a href="/"><img src={logo} alt="SpartanLogo" style={{width:'auto', height:40, marginLeft:30}}/></a>
                 </Col>
-                <Col xs={8}>
-
-                </Col>
-                <Col xs={8} style={{ textAlign: 'right' }}>
+                <Col xs={13} style={{ textAlign: 'right'}}>
                     {!connected && !connecting &&
                         <Button type="primary" onClick={connectWallet}>CONNECT</Button>
                     }

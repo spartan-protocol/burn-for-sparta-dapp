@@ -27,8 +27,8 @@ const App = () => {
 				<BreakpointProvider>
 					<Header/>
 					<main>
-						<Sidebar />
 						<Content style={{ background: Colour().dgrey, color: Colour().white}}>
+						<Sidebar />
 							<div className="ant-wrapper">
 								<Switch>
 									<Route path="/" exact component={Overview} />
