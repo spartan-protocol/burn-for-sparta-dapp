@@ -1,6 +1,5 @@
 import React, { useEffect, useState,  } from 'react'
 
-import { LabelGrey } from '../components'
 import { AllocationTable } from '../components/allocationTable'
 
 import '../../App.less'
@@ -36,8 +35,14 @@ const Allocations = () => {
 
 					{safari &&
 						<>
-							<LabelGrey>Sending Binance Smart Chain transactions requires Chrome and Metamask</LabelGrey>
-							<a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank" style={{ color: "#C7692B", fontSize: 12 }}>Download Metamask</a>
+						<Row gutter={[16, 16]} type="flex" justify="center">
+							<Col xs={24}>
+								<Card>
+									<h2>Sending Binance Smart Chain transactions requires Chrome and Metamask</h2>
+									<div className='sparta-button'><a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank">Download Metamask</a></div>
+								</Card>
+							</Col>
+						</Row>
 						</>
 					}
 					{!safari &&

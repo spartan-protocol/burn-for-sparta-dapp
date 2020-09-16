@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
-import { LabelGrey } from '../components'
 import { BurnTable } from '../components/burnTable'
 
 import { Click, Colour, Center, Button } from "../components"
@@ -55,9 +54,14 @@ const Burn = () => {
 
 					{safari &&
 						<>
-							<LabelGrey>Sending Binance Smart Chain transactions requires Chrome and Metamask</LabelGrey>
-							<br />
-							<a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank" style={{ color: "#C7692B", fontSize: 12 }}>Download Metamask</a>
+						<Row gutter={[16, 16]} type="flex" justify="center">
+							<Col xs={24}>
+								<Card>
+									<h2>Sending Binance Smart Chain transactions requires Chrome and Metamask</h2>
+									<div className='sparta-button'><a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank">Download Metamask</a></div>
+								</Card>
+							</Col>
+						</Row>
 						</>
 					}
 
