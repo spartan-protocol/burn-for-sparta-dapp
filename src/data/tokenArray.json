@@ -63,9 +63,9 @@
       "name": "Ankr",
       "symbol": "ANKR",
       "address": "0xf307910a4c7bbc79691fd374889b36d8531b08e3",
-      "allocation": 150000000000000000000000000,
-      "claimRate": 33333333333333300,
-      "snapshotPrice": "$0.01",
+      "allocation": 200000000000000000000000000,
+      "claimRate": 25000000000000000,
+      "snapshotPrice": "$0.0075",
       "totalValue": "$1,500,000.00",
       "spartaAllocation": 5000000
     }
