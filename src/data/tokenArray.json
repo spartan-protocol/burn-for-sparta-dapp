@@ -20,7 +20,7 @@
       "spartaAllocation": 10000000
     },
     {
-      "name": "RAVEN PROTOCOL",
+      "name": "Raven Protocol",
       "symbol": "RAVEN",
       "address": "0xcd7c5025753a49f1881b31c48caa7c517bb46308",
       "allocation": 1500000000000000000000000000,
@@ -56,6 +56,16 @@
       "allocation": 750000000000000000000000,
       "claimRate": 6666666666666670000,
       "snapshotPrice": "$2.00",
+      "totalValue": "$1,500,000.00",
+      "spartaAllocation": 5000000
+    },
+    {
+      "name": "Ankr",
+      "symbol": "ANKR",
+      "address": "0xf307910a4c7bbc79691fd374889b36d8531b08e3",
+      "allocation": 150000000000000000000000000,
+      "claimRate": 33333333333333300,
+      "snapshotPrice": "$0.01",
       "totalValue": "$1,500,000.00",
       "spartaAllocation": 5000000
     }
