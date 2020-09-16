@@ -101,7 +101,7 @@ export const SpartanPane = () => {
     return (
         <Row id="SpartanStatsTable" style={SpartanStatsStyles}>
 
-            <Col xs={24} sm={18} style={{ paddingLeft: 20 }}>
+            <Col xs={24} sm={18}>
                 <Row>
                     <Col xs={24}>
                         <Text size={32}> {spartanData.name} ({spartanData.symbol})</Text>
@@ -110,7 +110,7 @@ export const SpartanPane = () => {
                     </Col>
                 </Row>
 
-                <Row style={{ marginTop: 20 }}>
+                <Row style={{ marginTop: 30 }}>
                     <Col xs={24} sm={12}>
                         <LabelGrey size={14}>MAX SUPPLY</LabelGrey>
                         <br />
@@ -123,7 +123,7 @@ export const SpartanPane = () => {
                     </Col>
                 </Row>
 
-                <Row style={{ marginTop: 20 }}>
+                <Row style={{ marginTop: 30 }}>
                     <Col xs={24} sm={12}>
                         <LabelGrey size={14}>EMITTED</LabelGrey>
                         <br />
@@ -138,7 +138,7 @@ export const SpartanPane = () => {
                 <br />
 
             </Col>
-            <Col id="SpartanStatsTableCurrentPrice" xs={24} sm={6} style={{ paddingRight: 20 }}>
+            <Col id="SpartanStatsTableCurrentPrice" xs={24} sm={6}>
                 <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                     <Logo />
                 </div>
@@ -149,7 +149,7 @@ export const SpartanPane = () => {
 
             </Col>
             <br />
-            
+
         </Row>
 
     )
