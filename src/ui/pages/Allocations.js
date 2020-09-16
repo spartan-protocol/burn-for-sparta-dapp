@@ -4,7 +4,7 @@ import { LabelGrey } from '../components'
 import { AllocationTable } from '../components/allocationTable'
 
 import '../../App.less'
-import { Card } from 'antd'
+import { Card, Row, Col } from 'antd'
 
 const Allocations = () => {
 
@@ -25,10 +25,15 @@ const Allocations = () => {
 
 	return (
 		<>
-			<Card>
-				<h1 style={{ fontSize: 48}}>ALLOCATION TABLE</h1>
-				<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
-			</Card>
+		<Row gutter={[16, 16]} type="flex" justify="center">
+			<Col xs={24}>
+				<Card>
+					<h1 style={{ fontSize: 48}}>ALLOCATION TABLE</h1>
+					<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
+				</Card>
+			</Col>
+		</Row>
+
 					{safari &&
 						<>
 							<LabelGrey>Sending Binance Smart Chain transactions requires Chrome and Metamask</LabelGrey>
