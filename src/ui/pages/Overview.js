@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Row, Col } from 'antd'
+import { Row, Col, Card } from 'antd'
 import { Abstract } from '../components/abstract'
 import { SpartanPane } from '../components/SpartanPane'
 import { UsefulLinks } from '../components/usefulLinks'
@@ -36,39 +36,28 @@ const Overview = (props) => {
 			<SpartanPane/>
 			<br />
 			<Row type="flex" justify="space-around">
-				<Col md={7} className="sparta-tile">
-					<Row>
-						<h1>1</h1> <h1>SEND</h1>
-					</Row>
-					<Row>
-						<h2>Send BNB & BEP2 assets from Binance Chain to Binance Smart Chain</h2>
-					</Row>
-					<Row>
-						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/swap-bep2-token-for-its-bep20-equivalent-a5054eec314d' rel="noopener noreferrer">SEND</a></div>
-					</Row>
+
+				<Col md={7}>
+					<Card title="Step 1: Send">
+							<h2>Send BNB & BEP2 assets from Binance Chain to Binance Smart Chain</h2>
+							<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/swap-bep2-token-for-its-bep20-equivalent-a5054eec314d' rel="noopener noreferrer">Send</a></div>
+					</Card>
 				</Col>
-				<Col md={7} className="sparta-tile">
-					<Row>
-						<h1>2</h1>  <h1>CONNECT</h1>
-					</Row>
-					<Row>
-						<h2>Connect your MetaMask wallet with Binance Smart Chain</h2>
-					</Row>
-					<Row type="flex" align="middle">
-						<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer">CONNECT</a></div>
-					</Row>
+
+				<Col md={7}>
+					<Card title="Step 2: Connect">
+							<h2>Connect your MetaMask wallet with Binance Smart Chain</h2>
+							<div className='sparta-button'><a href='https://medium.com/@spartanprotocol/connecting-metamask-to-bsc-mainnet-23e434bc670f' rel="noopener noreferrer">Connect</a></div>
+					</Card>
 				</Col>
-				<Col md={7} className="sparta-tile">
-					<Row>
-						<h1>3</h1>  <h1>BURN</h1>
-					</Row>
-					<Row>
-						<h2>Burn BNB & BEP20 assets. Acquire your share of the 100m initial SPARTA</h2>
-					</Row>
-					<Row>
-						<div className='sparta-button'><a href={window.location.origin + '/burn'} rel="noopener noreferrer">BURN</a></div>
-					</Row>
+
+				<Col md={7}>
+					<Card title="Step 3: Burn">
+						<h2>Burn BEP20 assets to acquire your share of the 100m initial SPARTA</h2>
+						<div className='sparta-button'><a href={window.location.origin + '/burn'} rel="noopener noreferrer">Burn</a></div>
+					</Card>
 				</Col>
+
 			</Row>
 
 			<br/>
