@@ -4,6 +4,7 @@ import { LabelGrey } from '../components'
 import { AllocationTable } from '../components/allocationTable'
 
 import '../../App.less'
+import { Card } from 'antd'
 
 const Allocations = () => {
 
@@ -24,8 +25,10 @@ const Allocations = () => {
 
 	return (
 		<>
-			<h1>ALLOCATION TABLE</h1>
-					<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
+			<Card>
+				<h1 style={{ fontSize: 48}}>ALLOCATION TABLE</h1>
+				<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
+			</Card>
 					{safari &&
 						<>
 							<LabelGrey>Sending Binance Smart Chain transactions requires Chrome and Metamask</LabelGrey>
@@ -44,4 +47,3 @@ const Allocations = () => {
 	)
 }
 export default Allocations
-

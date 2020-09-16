@@ -7,7 +7,7 @@ import { BurnTable } from '../components/burnTable'
 import { Click, Colour, Center, Button } from "../components"
 
 import '../../App.less'
-import { Modal, Row, Col } from 'antd'
+import { Modal, Row, Col, Card } from 'antd'
 
 const Burn = () => {
 
@@ -47,9 +47,12 @@ const Burn = () => {
 
 	return (
 		<>
-			<h1>CLAIM SPARTA</h1>
-					<h2>Claim your share of SPARTA by burning BNB and BEP20 assets.</h2>
-					<p>All assets burnt are forever destroyed. SPARTA will be minted and sent to your address.</p>
+			<Card>
+				<h1 style={{ fontSize: 48}}>CLAIM SPARTA</h1>
+				<h2>CLAIM YOUR SHARE OF SPARTA BY BURNING BNB AND BEP20 ASSETS</h2>
+				<h3>All assets burnt are forever destroyed. SPARTA will be minted and sent to your address.</h3>
+			</Card>
+
 					{safari &&
 						<>
 							<LabelGrey>Sending Binance Smart Chain transactions requires Chrome and Metamask</LabelGrey>
@@ -57,11 +60,13 @@ const Burn = () => {
 							<a href='https://metamask.io' rel="noopener noreferrer" title="Metamask Link" target="_blank" style={{ color: "#C7692B", fontSize: 12 }}>Download Metamask</a>
 						</>
 					}
+
 					{!safari && context.connectedBSC &&
 						<>
 							<BurnTable />
 						</>
 					}
+
 					{!safari && !context.connectedBSC &&
 						<>
 						<br/><br/><br/><br/>
