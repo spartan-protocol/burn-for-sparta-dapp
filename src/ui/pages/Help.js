@@ -1,3 +1,5 @@
+import React from 'react'
+
 import '../../App.less'
 import { Card, Row, Col } from 'antd'
 
