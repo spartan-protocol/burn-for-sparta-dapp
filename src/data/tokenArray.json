@@ -68,5 +68,15 @@
       "snapshotPrice": "$0.0075",
       "totalValue": "$1,500,000.00",
       "spartaAllocation": 5000000
+    },
+    {
+      "name": "Chain Link",
+      "symbol": "LINK",
+      "address": "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+      "allocation": 250000000000000000000000,
+      "claimRate": 40000000000000000000,
+      "snapshotPrice": "$12.00",
+      "totalValue": "$3,000,000.00",
+      "spartaAllocation": 10000000
     }
   ]
