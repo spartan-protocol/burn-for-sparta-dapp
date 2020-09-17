@@ -28,7 +28,7 @@ const Allocations = () => {
 			<Col xs={24}>
 				<Card>
 					<h1 style={{ fontSize: 48}}>ALLOCATION TABLE</h1>
-					<h2>30 BINANCE CHAIN PROJECTS ARE BURNING FOR SPARTA</h2>
+					<h2>30 BINANCE SMART CHAIN TOKENS BURNING FOR SPARTA</h2>
 				</Card>
 			</Col>
 		</Row>
