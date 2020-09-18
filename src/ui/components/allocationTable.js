@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Context } from '../../context'
 
-import { Row, Col, Table, Progress } from 'antd'
+import { Row, Col, Table, Progress, Tooltip } from 'antd'
 // import { LoadingOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Text, Colour, } from '../components'
 import { formatWei, convertFromWeiDigits } from '../../common/utils'
@@ -80,10 +80,14 @@ export const AllocationTable = () => {
             title: 'Progress',
             key: 'progress',
             render: (record) => {
+
+              const burnprog = (+record.claimed / +record.allocation) * 100
+
                 return (
                     <div>
-                        <Progress percent={(+record.claimed / +record.allocation) * 100}
-                            status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
+                    <Tooltip title={formatWei(record.claimed, 0, 0) + " burned (" + burnprog.toFixed(0) + "%)"}>
+                      <Progress percent={burnprog} status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
+                    </Tooltip>
                     </div>
                 )
             }
