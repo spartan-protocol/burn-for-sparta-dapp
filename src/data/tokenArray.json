@@ -78,5 +78,15 @@
       "snapshotPrice": "$12.00",
       "totalValue": "$3,000,000.00",
       "spartaAllocation": 10000000
+    },
+    {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "address": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+      "allocation": 2010723860589810000000,
+      "claimRate": 1243333333333330000000,
+      "snapshotPrice": "$373.00",
+      "totalValue": "$750,000.00",
+      "spartaAllocation": 2500000
     }
   ]
