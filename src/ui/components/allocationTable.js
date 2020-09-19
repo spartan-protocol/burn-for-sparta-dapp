@@ -85,14 +85,14 @@ export const AllocationTable = () => {
 
                 return (
                     <div>
-                    {(burnprog.toFixed(1) < 100) &&
+                    {(burnprog.toFixed(5) < 100) &&
                       <Tooltip title={formatWei(record.claimed, 0, 0) + " burned (" + burnprog.toFixed(1) + "%)"}>
                       <Progress percent={burnprog} status="active" size="small" showInfo={false} strokeColor={Colour().gold} />
                       </Tooltip>
                     }
 
-                    {(burnprog.toFixed(1) >= 100) &&
-                      <Tooltip title={formatWei(record.allocation, 0, 0) + " burned (100%)"}>
+                    {(burnprog.toFixed(5) >= 100) &&
+                      <Tooltip title={formatWei(record.claimed, 0, 0) + " burned (100%)"}>
                       <Progress percent={burnprog} size="small" showInfo={false} strokeColor={Colour().red} />
                       </Tooltip>
                     }
