@@ -10,7 +10,7 @@ import {
 } from '../../client/web3.js'
 import { convertFromWei, currency } from '../../common/utils'
 
-import { Row, Col } from 'antd'
+import { Row, Col, Card } from 'antd'
 import { LabelGrey, Colour, Text } from '../components'
 import { Logo } from './logo'
 
@@ -91,66 +91,30 @@ export const SpartanPane = () => {
     //     })
     // }
 
-    const SpartanStatsStyles = {
-        padding: '49px 21px',
-        borderRadius: '9px',
-        borderColor: Colour().grey,
-        backgroundColor: Colour().black,
-    }
-
     return (
-        <Row id="SpartanStatsTable" style={SpartanStatsStyles}>
 
-            <Col xs={24} sm={18}>
-                <Row>
-                    <Col xs={24}>
-                        <Text size={32}> {spartanData.name} ({spartanData.symbol})</Text>
-                    </Col>
-                    <Col xs={0}>
-                    </Col>
-                </Row>
-
-                <Row style={{ marginTop: 30 }}>
-                    <Col xs={24} sm={12}>
-                        <LabelGrey size={14}>MAX SUPPLY</LabelGrey>
-                        <br />
-                        <Text size={24}>{currency(spartanData.maxSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
-                    </Col>
-                    <Col xs={24} sm={12}>
-                        <LabelGrey size={14}>INITIAL DISTRIBUTION</LabelGrey>
-                        <br />
-                        <Text size={24}>{currency(spartanData.initalSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
-                    </Col>
-                </Row>
-
-                <Row style={{ marginTop: 30 }}>
-                    <Col xs={24} sm={12}>
-                        <LabelGrey size={14}>EMITTED</LabelGrey>
-                        <br />
-                        <Text size={24}>{currency(emissionData.totalEmitted, 0, 0, 'SPARTA').replace('SPARTA', '')}</Text>
-                    </Col>
-                    <Col id="SpartanStatsTableCircCap" xs={24} sm={12}>
-                        <LabelGrey size={14}>CIRCULATING CAP</LabelGrey>
-                        <br />
-                        <Text size={24}>{currency((emissionData.totalEmitted * marketData.priceUSD), 0, 0)}</Text>
-                    </Col>
-                </Row>
+            <Card title="SPARTA Token">
+              <Col xs={24} sm={8}>
+                <h3>MAX SUPPLY</h3>
+                <h2>{currency(spartanData.maxSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</h2>
                 <br />
-
-            </Col>
-            <Col id="SpartanStatsTableCurrentPrice" xs={24} sm={6}>
-                <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-                    <Logo />
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <Text size={32}>{currency(marketData.priceUSD, 2, 2)}</Text>
-                </div>
+                <h3>EMITTED</h3>
+                <h2>{currency(emissionData.totalEmitted, 0, 0, 'SPARTA').replace('SPARTA', '')}</h2>
+              </Col>
+              <Col xs={0} sm={8}>
+                <Logo />
                 <br />
-
-            </Col>
-            <br />
-
-        </Row>
+                <br />
+                <h1>{currency(marketData.priceUSD, 2, 2)}</h1>
+              </Col>
+              <Col xs={24} sm={8}>
+                <h3>INITIAL DISTRIBUTION</h3>
+                <h2>{currency(spartanData.initalSupply, 0, 0, 'SPARTA').replace('SPARTA', '')}</h2>
+                <br />
+                <h3>CIRCULATING CAP</h3>
+                <h2>{currency((emissionData.totalEmitted * marketData.priceUSD), 0, 0)}</h2>
+              </Col>
+            </Card>
 
     )
 }

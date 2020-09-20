@@ -6,7 +6,6 @@ import { SPARTA_ADDR, getExplorerURL } from '../../client/web3'
 export const UsefulLinks = (props) => {
     return (
         <>
-            <Row>
                 <Col>
                   <Row>
                     <div className='sparta-button'><a href={`${getExplorerURL()}token/${SPARTA_ADDR}`} rel="noopener noreferrer" title="Etherscan Link" target="_blank">Spartan Contract</a></div>
@@ -18,8 +17,6 @@ export const UsefulLinks = (props) => {
                     <div className='sparta-button'><a href="https://youtu.be/7yS2rQMbrnA" rel="noopener noreferrer" title="Video Guide to Burn for SPARTA" target="_blank">Burn Guide (YouTube)</a></div>
                   </Row>
                 </Col>
-            </Row>
-            <br/><br/>
         </>
     )
 }
