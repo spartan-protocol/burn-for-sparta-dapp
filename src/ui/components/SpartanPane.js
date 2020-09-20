@@ -10,8 +10,7 @@ import {
 } from '../../client/web3.js'
 import { convertFromWei, currency } from '../../common/utils'
 
-import { Row, Col, Card } from 'antd'
-import { LabelGrey, Colour, Text } from '../components'
+import { Col, Card } from 'antd'
 import { Logo } from './logo'
 
 export const SpartanPane = () => {
