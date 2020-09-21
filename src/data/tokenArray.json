@@ -98,5 +98,15 @@
       "snapshotPrice": "$1.00",
       "totalValue": "$375,000.00",
       "spartaAllocation": 1250000
+    },
+    {
+      "name": "Ripple",
+      "symbol": "XRP",
+      "address": "0x1d2f0da169ceb9fc7b3144628db156f3f6c60dbe",
+      "allocation": 1500000000000000000000000,
+      "claimRate": 833333333333333000,
+      "snapshotPrice": "$0.25",
+      "totalValue": "$375,000.00",
+      "spartaAllocation": 1250000
     }
   ]
