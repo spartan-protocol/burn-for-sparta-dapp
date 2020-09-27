@@ -98,5 +98,15 @@
       "snapshotPrice": "$0.25",
       "totalValue": "$375,000.00",
       "spartaAllocation": 1250000
+    },
+    {
+      "name": "BurgerSwap",
+      "symbol": "BURGER",
+      "address": "0xae9269f27437f0fcbc232d39ec814844a51d6b8f",
+      "allocation": 375000000000000000000000,
+      "claimRate": 3333333333333330000,
+      "snapshotPrice": "$1,00",
+      "totalValue": "$375,000.00",
+      "spartaAllocation": 1250000
     }
   ]
