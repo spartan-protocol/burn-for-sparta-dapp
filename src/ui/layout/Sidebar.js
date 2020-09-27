@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Menu, Layout } from 'antd'
 
-import logo from '../../assets/spartan-coin-logo.png';
+import logo from '../../assets/spartan-protocol-logo.png';
 
 import { MediumOutlined } from '@ant-design/icons'
 import { Icon } from '../components'
