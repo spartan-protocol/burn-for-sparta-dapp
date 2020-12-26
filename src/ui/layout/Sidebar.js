@@ -15,8 +15,8 @@ const Sidebar = (props) => {
   const [page, setPage] = useState(null)
   const menu_items = [
     "overview",
-    "burn",
-    "allocations",
+    // "burn",
+    // "allocations",
     // "stake",
     // "trade",
     "help",
@@ -53,12 +53,14 @@ return (
         <Menu.Item key="overview">
           <a href="/overview"><Icon icon="overview"></Icon>Overview</a>
         </Menu.Item>
+        {/*
         <Menu.Item key="burn">
           <a href="/burn"><Icon icon="burn"></Icon>Burn</a>
         </Menu.Item>
         <Menu.Item key="allocations">
           <a href="/allocations"><Icon icon="allocations"></Icon>Allocations</a>
         </Menu.Item>
+        */}
         <Menu.Item key="help">
           <a href="/help"><Icon icon="help"></Icon>Help</a>
         </Menu.Item>

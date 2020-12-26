@@ -33,8 +33,10 @@ const App = () => {
 								<Switch>
 									<Route path="/" exact component={Overview} />
 									<Route path="/overview" exact component={Overview} />
+									{/*
 									<Route path="/burn" exact component={Burn} />
 									<Route path="/allocations" exact component={Allocations} />
+									*/}
 									<Route path="/help" exact component={Help} />
 									<Route path="/dao" exact component={DAO} />
 									<Route path="/about" exact component={About} />
