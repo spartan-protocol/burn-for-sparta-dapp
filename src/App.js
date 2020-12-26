@@ -10,11 +10,11 @@ import { BreakpointProvider } from 'react-socks'
 import Header from './ui/layout/Header'
 import Sidebar from './ui/layout/Sidebar'
 import Overview from './ui/pages/Overview'
-import Burn from './ui/pages/Burn'
+//import Burn from './ui/pages/Burn'
 import About from './ui/pages/About'
 import DAO from './ui/pages/DAO'
 import Help from './ui/pages/Help'
-import Allocations from './ui/pages/Allocations'
+//import Allocations from './ui/pages/Allocations'
 
 
 const { Content } = Layout
