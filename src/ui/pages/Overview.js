@@ -23,7 +23,7 @@ const Overview = (props) => {
 					<SpartanPane/>
 				</Col>
 				<Col xs={24}>
-					<h4>BURN PHASE IS NOW OVER/CLOSED!</h4>
+					<h1 style={{textAlign:'center'}}>BURN PHASE IS NOW OVER/CLOSED!</h1>
 				</Col>
 				<Col xs={24} sm={12} lg={24}>
 					<Card title="LEARN MORE">
